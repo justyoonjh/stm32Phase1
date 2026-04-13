@@ -1,0 +1,59 @@
+!SESSION 2026-04-13 23:45:15.738 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=ko_KR
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-04-13 23:45:28.429
+!MESSAGE Log4j2 initialized with config file /home/justjhst/바탕화면/Phase1/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-04-13 23:45:31.599
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1002 2026-04-13 23:48:01.712
+!MESSAGE Unable to read repository at https://sw-center.st.com/stm32cubeide/updatesite1/compositeContent.xml.
+!STACK 0
+java.net.http.HttpConnectTimeoutException: HTTP connect timed out
+	at java.net.http/jdk.internal.net.http.ResponseTimerEvent.handle(ResponseTimerEvent.java:68)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.purgeTimeoutsAndReturnNextDeadline(HttpClientImpl.java:1788)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1386)
+Caused by: java.net.ConnectException: HTTP connect timed out
+	at java.net.http/jdk.internal.net.http.ResponseTimerEvent.handle(ResponseTimerEvent.java:69)
+	... 2 more
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-14 00:31:17.049
+!MESSAGE Indexed '002sampleApp' (3 sources, 53 headers) in 1.01 sec: 1,954 declarations; 2,863 references; 0 unresolved inclusions; 2 syntax errors; 2 unresolved names (0.042%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-14 00:31:58.852
+!MESSAGE Indexed '001HelloWorld' (5 sources, 55 headers) in 0.411 sec: 2,160 declarations; 3,094 references; 0 unresolved inclusions; 3 syntax errors; 2 unresolved names (0.038%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2026-04-14 00:37:59.332
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 16000000; div: 8
+
+!ENTRY org.eclipse.cdt.dsf.ui 2 0 2026-04-14 00:40:52.917
+!MESSAGE Unable to locate file: /home/justjhst/\353\260\224\355\203\225\355\231\224\353\251\264/Phase1/002sampleApp/Src/main.c
+
+!ENTRY org.eclipse.cdt.dsf.ui 2 0 2026-04-14 00:48:14.897
+!MESSAGE Unable to locate file: /home/justjhst/\353\260\224\355\203\225\355\231\224\353\251\264/Phase1/002sampleApp/Src/syscalls.c
+
+!ENTRY org.eclipse.cdt.dsf.ui 2 0 2026-04-14 00:48:43.391
+!MESSAGE Unable to locate file: /home/justjhst/\353\260\224\355\203\225\355\231\224\353\251\264/Phase1/002sampleApp/Startup/startup_stm32f446retx.s
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 4 2026-04-14 00:49:17.202
+!MESSAGE NullPointerException while trying to calculated source lookup path. This can be ignored if it occurs while terminating a debug session. See Bug 500988.
+!STACK 0
+java.lang.NullPointerException: Cannot read the array length because "containers" is null
+	at org.eclipse.cdt.dsf.gdb.launching.GdbSourceLookupDirector.collectSubstitutionsPaths(GdbSourceLookupDirector.java:102)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbSourceLookupDirector.collectSubstitutionsPaths(GdbSourceLookupDirector.java:146)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbSourceLookupDirector.getSubstitutionsPaths(GdbSourceLookupDirector.java:72)
+	at org.eclipse.cdt.dsf.gdb.service.GDBSourceLookup.getSubstitutionsPaths(GDBSourceLookup.java:124)
+	at org.eclipse.cdt.dsf.gdb.service.GDBSourceLookup.sourceContainersChanged(GDBSourceLookup.java:139)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbSourceLookupParticipant.sourceContainersChangedOnDispatchThread(GdbSourceLookupParticipant.java:120)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbSourceLookupParticipant$1.run(GdbSourceLookupParticipant.java:85)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
