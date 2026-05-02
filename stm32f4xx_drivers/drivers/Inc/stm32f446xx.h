@@ -38,7 +38,7 @@
 #define GPIOF_BASEADDR								(AHB1PERIPH_BASE + 0x1400)
 #define GPIOG_BASEADDR								(AHB1PERIPH_BASE + 0x1800)
 #define GPIOH_BASEADDR								(AHB1PERIPH_BASE + 0x1C00)
-
+#define RCC_BASEADDR									(AHB1PERIPH_BASE + 0X3800)
 // APB1
 
 #define SPI2_I2S2_BASEADDR							(APB1PERIPH_BASE + 0x3800)
@@ -79,6 +79,43 @@ typedef struct
 	// AFR[0] : GPIO alternate function Low register, AFR[1] : GPIO alternate function high register
 }GPIO_RegDef_t;
 
+typedef struct {
+	volatile uint32_t CR;
+	volatile uint32_t PLLCFGR;
+	volatile uint32_t CFGR;
+	volatile uint32_t CIR;
+	volatile uint32_t AHB1RSTR;
+	volatile uint32_t AHB2RSTR;
+	volatile uint32_t AHB3RSTR;
+	volatile uint32_t RESERVED0;
+	volatile uint32_t APB1RSTR;
+	volatile uint32_t APB2RSTR;
+	volatile uint32_t RESERVED1[2];
+	volatile uint32_t AHB1ENR;
+	volatile uint32_t AHB2ENR;
+	volatile uint32_t AHB3ENR;
+	volatile uint32_t RESERVED3;
+	volatile uint32_t APB1ENR;
+	volatile uint32_t APB2ENR;
+	volatile uint32_t RESERVED4[2];
+	volatile uint32_t AHB1LPENR;
+	volatile uint32_t AHB2LPENR;
+	volatile uint32_t AHB3LPENR;
+	volatile uint32_t RESERVED5;
+	volatile uint32_t APB1LPENR;
+	volatile uint32_t APB2LPENR;
+	volatile uint32_t RESERVED6[2];
+	volatile uint32_t BDCR;
+	volatile uint32_t CSR;
+	volatile uint32_t RESERVED7[2];
+	volatile uint32_t SSCGR;
+	volatile uint32_t PLLI2SCFGR;
+	volatile uint32_t PLLSAICFGR;
+	volatile uint32_t DCKCFGR;
+	volatile uint32_t CKGATENR;
+	volatile uint32_t DCKCFGR2;
+}RCC_Regdef_t;
+
 // peripheral definitions
 
 #define GPIOA		((GPIO_RegDef_t*) GPIOA_BASEADDR)
@@ -90,5 +127,67 @@ typedef struct
 #define GPIOG		((GPIO_RegDef_t*) GPIOG_BASEADDR)
 #define GPIOH		((GPIO_RegDef_t*) GPIOH_BASEADDR)
 
+#define RCC 		((RCC_Regdef_t*) RCC_BASEADDR)
+
+#define GPIOA_CLK() (RCC->AHB1ENR |= (1U << 0))
+#define GPIOB_CLK() (RCC->AHB1ENR |= (1U << 1))
+#define GPIOC_CLK() (RCC->AHB1ENR |= (1U << 2))
+#define GPIOD_CLK() (RCC->AHB1ENR |= (1U << 3))
+#define GPIOE_CLK() (RCC->AHB1ENR |= (1U << 4))
+#define GPIOF_CLK() (RCC->AHB1ENR |= (1U << 5))
+#define GPIOG_CLK() (RCC->AHB1ENR |= (1U << 6))
+#define GPIOH_CLK() (RCC->AHB1ENR |= (1U << 7))
+
+#define I2C1_CLK() (RCC->APB1ENR |= (1U << 21))
+#define I2C2_CLK() (RCC->APB1ENR |= (1U << 22))
+#define I2C3_CLK() (RCC->APB1ENR |= (1U << 23))
+
+#define SPI1_CLK() (RCC->APB2ENR |= (1U << 12))
+#define SPI2_CLK() (RCC->APB1ENR |= (1U << 14))
+#define SPI3_CLK() (RCC->APB1ENR |= (1U << 15))
+#define SPI4_CLK() (RCC->APB2ENR |= (1U << 13))
+
+#define USART1_CLK() (RCC->APB2ENR |= (1 << 4))
+#define USART2_CLK() (RCC->APB1ENR |= (1 << 17))
+#define USART3_CLK() (RCC->APB1ENR |= (1 << 18))
+#define UART4_CLK() (RCC->APB1ENR |= (1 << 19))
+#define UART5_CLK() (RCC->APB1ENR |= (1 << 20))
+#define USART6_CLK() (RCC->APB2ENR |= (1 << 5))
+
+#define SYSCFG_CLK() (RCC->APB2ENR |= (1 << 14))
+
+#define GPIOA_CLK_DI() (RCC->AHB1ENR |= (0U << 0))
+#define GPIOB_CLK_DI() (RCC->AHB1ENR |= (0U << 1))
+#define GPIOC_CLK_DI() (RCC->AHB1ENR |= (0U << 2))
+#define GPIOD_CLK_DI() (RCC->AHB1ENR |= (0U << 3))
+#define GPIOE_CLK_DI() (RCC->AHB1ENR |= (0U << 4))
+#define GPIOF_CLK_DI() (RCC->AHB1ENR |= (0U << 5))
+#define GPIOG_CLK_DI() (RCC->AHB1ENR |= (0U << 6))
+#define GPIOH_CLK_DI() (RCC->AHB1ENR |= (0U << 7))
+
+#define I2C1_CLK_DI() (RCC->APB1ENR |= (0U << 21))
+#define I2C2_CLK_DI() (RCC->APB1ENR |= (0U << 22))
+#define I2C3_CLK_DI() (RCC->APB1ENR |= (0U << 23))
+
+#define SPI1_CLK_DI() (RCC->APB2ENR |= (0U << 12))
+#define SPI2_CLK_DI() (RCC->APB1ENR |= (0U << 14))
+#define SPI3_CLK_DI() (RCC->APB1ENR |= (0U << 15))
+#define SPI4_CLK_DI() (RCC->APB2ENR |= (0U << 13))
+
+#define USART1_CLK_DI() (RCC->APB2ENR |= (0 << 4))
+#define USART2_CLK_DI() (RCC->APB1ENR |= (0 << 17))
+#define USART3_CLK_DI() (RCC->APB1ENR |= (0 << 18))
+#define UART4_CLK_DI() (RCC->APB1ENR |= (0 << 19))
+#define UART5_CLK_DI() (RCC->APB1ENR |= (0 << 20))
+#define USART6_CLK_DI() (RCC->APB2ENR |= (0 << 5))
+
+#define SYSCFG_CLK_DI() (RCC->APB2ENR |= (0 << 14))
+
+#define ENABLE 1
+#define DISABLE 0
+#define SET ENABLE
+#define RESET DISABLE
+#define GPIO_PIN_SET SET
+#define GPIO_PIN_RESET RESET
 
 #endif /* INC_STM32F446XX_H_ */
