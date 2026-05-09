@@ -1097,3 +1097,416 @@ Finished building: default.size.stdout
  
 Finished building: stm32f4xx_drivers.list
  
+17:21:54 **** Clean-only build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 clean 
+rm -rf ./drivers/Src/stm32f446xx_gpio_driver.cyclo ./drivers/Src/stm32f446xx_gpio_driver.d ./drivers/Src/stm32f446xx_gpio_driver.o ./drivers/Src/stm32f446xx_gpio_driver.su
+rm -rf ./Startup/startup_stm32f446retx.d ./Startup/startup_stm32f446retx.o
+rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout stm32f4xx_drivers.elf stm32f4xx_drivers.list stm32f4xx_drivers.map
+ 
+17:21:54 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_gpio_driver.d" -MT"drivers/Src/stm32f446xx_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_gpio_driver.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
+arm-none-eabi-gcc "../Src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001led_toggle.d" -MT"Src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001led_toggle.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+../Src/001led_toggle.c: In function 'main':
+../Src/001led_toggle.c:16:9: error: unknown type name 'GPIO_Handle_t'
+   16 |         GPIO_Handle_t GpioLed;
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+      |         ^~~~~~~~~~~~~
+../Src/001led_toggle.c:18:16: error: request for member 'pGPIOx' in something not a structure or union
+   18 |         GpioLed.pGPIOx = GPIOA;
+      |                ^
+../Src/001led_toggle.c:19:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   19 |         GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
+      |                ^
+../Src/001led_toggle.c:19:49: error: 'GPIO_PIN_NO_5' undeclared (first use in this function); did you mean 'GPIO_PIN_SET'?
+   19 |         GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
+      |                                                 ^~~~~~~~~~~~~
+      |                                                 GPIO_PIN_SET
+../Src/001led_toggle.c:19:49: note: each undeclared identifier is reported only once for each function it appears in
+../Src/001led_toggle.c:20:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   20 |         GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUTPUT;
+      |                ^
+../Src/001led_toggle.c:20:47: error: 'GPIO_MODE_OUTPUT' undeclared (first use in this function)
+   20 |         GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUTPUT;
+      |                                               ^~~~~~~~~~~~~~~~
+../Src/001led_toggle.c:21:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   21 |         GpioLed.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_LOW;
+      |                ^
+../Src/001led_toggle.c:21:48: error: 'GPIO_SPEED_LOW' undeclared (first use in this function)
+   21 |         GpioLed.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_LOW;
+      |                                                ^~~~~~~~~~~~~~
+../Src/001led_toggle.c:22:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   22 |         GpioLed.GPIO_PinConfig.GPIO_PinOPType = GPIO_OPTYPE_PP;
+      |                ^
+../Src/001led_toggle.c:22:49: error: 'GPIO_OPTYPE_PP' undeclared (first use in this function)
+   22 |         GpioLed.GPIO_PinConfig.GPIO_PinOPType = GPIO_OPTYPE_PP;
+      |                                                 ^~~~~~~~~~~~~~
+../Src/001led_toggle.c:23:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   23 |         GpioLed.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+      |                ^
+../Src/001led_toggle.c:23:54: error: 'GPIO_NO_PUPD' undeclared (first use in this function)
+   23 |         GpioLed.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+      |                                                      ^~~~~~~~~~~~
+../Src/001led_toggle.c:25:9: warning: implicit declaration of function 'GPIO_PeriClockControl' [-Wimplicit-function-declaration]
+   25 |         GPIO_PeriClockControl(GPIOA, ENABLE);
+      |         ^~~~~~~~~~~~~~~~~~~~~
+../Src/001led_toggle.c:26:9: warning: implicit declaration of function 'GPIO_Init' [-Wimplicit-function-declaration]
+   26 |         GPIO_Init(&GpioLed);
+      |         ^~~~~~~~~
+../Src/001led_toggle.c:30:17: warning: implicit declaration of function 'GPIO_ToggleOutputPin' [-Wimplicit-function-declaration]
+   30 |                 GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
+      |                 ^~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:25: Src/001led_toggle.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+17:22:51 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001led_toggle.d" -MT"Src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001led_toggle.o"
+../Src/001led_toggle.c: In function 'main':
+../Src/001led_toggle.c:22:32: error: 'GPIO_PinConfig_t' has no member named 'GPIO_PinSpeed'; did you mean 'GPIO_Pin_Speed'?
+   22 |         GpioLed.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_LOW;
+      |                                ^~~~~~~~~~~~~
+      |                                GPIO_Pin_Speed
+../Src/001led_toggle.c:23:32: error: 'GPIO_PinConfig_t' has no member named 'GPIO_PinOPType'; did you mean 'GPIO_PinOPtype'?
+   23 |         GpioLed.GPIO_PinConfig.GPIO_PinOPType = GPIO_OPTYPE_PP;
+      |                                ^~~~~~~~~~~~~~
+      |                                GPIO_PinOPtype
+make: *** [Src/subdir.mk:25: Src/001led_toggle.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+17:23:40 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001led_toggle.d" -MT"Src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001led_toggle.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+17:23:57 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:04:47 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001led_toggle.d" -MT"Src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001led_toggle.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+18:04:51 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:08:45 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001led_toggle.d" -MT"Src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001led_toggle.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+18:08:47 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:15:45 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001led_toggle.d" -MT"Src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001led_toggle.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+18:15:59 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:17:18 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001led_toggle.d" -MT"Src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001led_toggle.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+18:18:12 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:39:08 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001led_toggle.d" -MT"Src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001led_toggle.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+18:39:12 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:39:26 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:41:01 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:42:15 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/001led_toggle.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/001led_toggle.d" -MT"Src/001led_toggle.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/001led_toggle.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+18:42:25 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:42:27 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:43:51 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:44:47 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+18:44:49 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1500	      0	   1568	   3068	    bfc	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+22:16:12 **** Clean-only build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 clean 
+rm -rf ./drivers/Src/stm32f446xx_gpio_driver.cyclo ./drivers/Src/stm32f446xx_gpio_driver.d ./drivers/Src/stm32f446xx_gpio_driver.o ./drivers/Src/stm32f446xx_gpio_driver.su
+rm -rf ./Startup/startup_stm32f446retx.d ./Startup/startup_stm32f446retx.o
+rm -rf ./Src/001led_toggle.cyclo ./Src/001led_toggle.d ./Src/001led_toggle.o ./Src/001led_toggle.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout stm32f4xx_drivers.elf stm32f4xx_drivers.list stm32f4xx_drivers.map
+ 
+22:16:12 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_gpio_driver.d" -MT"drivers/Src/stm32f446xx_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_gpio_driver.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
+arm-none-eabi-gcc "../Src/002led_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/002led_button.d" -MT"Src/002led_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/002led_button.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/002led_button.c: In function 'main':
+../Src/002led_button.c:21:9: error: unknown type name 'GPIO_Handle_t'
+   21 |         GPIO_Handle_t GpioLed, GpioBtn;
+      |         ^~~~~~~~~~~~~
+../Src/002led_button.c:23:16: error: request for member 'pGPIOx' in something not a structure or union
+   23 |         GpioLed.pGPIOx = GPIOA;
+      |                ^
+../Src/002led_button.c:24:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   24 |         GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
+      |                ^
+../Src/002led_button.c:24:49: error: 'GPIO_PIN_NO_5' undeclared (first use in this function); did you mean 'GPIO_PIN_SET'?
+   24 |         GpioLed.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
+      |                                                 ^~~~~~~~~~~~~
+      |                                                 GPIO_PIN_SET
+../Src/002led_button.c:24:49: note: each undeclared identifier is reported only once for each function it appears in
+../Src/002led_button.c:25:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   25 |         GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUTPUT;
+      |                ^
+../Src/002led_button.c:25:47: error: 'GPIO_MODE_OUTPUT' undeclared (first use in this function)
+   25 |         GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUTPUT;
+      |                                               ^~~~~~~~~~~~~~~~
+../Src/002led_button.c:26:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   26 |         GpioLed.GPIO_PinConfig.GPIO_Pin_Speed = GPIO_SPEED_LOW;
+      |                ^
+../Src/002led_button.c:26:49: error: 'GPIO_SPEED_LOW' undeclared (first use in this function)
+   26 |         GpioLed.GPIO_PinConfig.GPIO_Pin_Speed = GPIO_SPEED_LOW;
+      |                                                 ^~~~~~~~~~~~~~
+../Src/002led_button.c:27:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   27 |         GpioLed.GPIO_PinConfig.GPIO_PinOPtype = GPIO_OPTYPE_OD;
+      |                ^
+../Src/002led_button.c:27:49: error: 'GPIO_OPTYPE_OD' undeclared (first use in this function)
+   27 |         GpioLed.GPIO_PinConfig.GPIO_PinOPtype = GPIO_OPTYPE_OD;
+      |                                                 ^~~~~~~~~~~~~~
+../Src/002led_button.c:28:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   28 |         GpioLed.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+      |                ^
+../Src/002led_button.c:28:54: error: 'GPIO_NO_PUPD' undeclared (first use in this function)
+   28 |         GpioLed.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+      |                                                      ^~~~~~~~~~~~
+../Src/002led_button.c:30:9: warning: implicit declaration of function 'GPIO_PeriClockControl' [-Wimplicit-function-declaration]
+   30 |         GPIO_PeriClockControl(GPIOA, ENABLE);
+      |         ^~~~~~~~~~~~~~~~~~~~~
+../Src/002led_button.c:31:9: warning: implicit declaration of function 'GPIO_Init' [-Wimplicit-function-declaration]
+   31 |         GPIO_Init(&GpioLed);
+      |         ^~~~~~~~~
+../Src/002led_button.c:33:16: error: request for member 'pGPIOx' in something not a structure or union
+   33 |         GpioBtn.pGPIOx = GPIOC;
+      |                ^
+../Src/002led_button.c:34:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   34 |         GpioBtn.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_13;
+      |                ^
+../Src/002led_button.c:34:49: error: 'GPIO_PIN_NO_13' undeclared (first use in this function)
+   34 |         GpioBtn.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_13;
+      |                                                 ^~~~~~~~~~~~~~
+../Src/002led_button.c:35:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   35 |         GpioBtn.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_INPUT;
+      |                ^
+../Src/002led_button.c:35:47: error: 'GPIO_MODE_INPUT' undeclared (first use in this function)
+   35 |         GpioBtn.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_INPUT;
+      |                                               ^~~~~~~~~~~~~~~
+../Src/002led_button.c:36:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   36 |         GpioBtn.GPIO_PinConfig.GPIO_Pin_Speed = GPIO_SPEED_LOW;
+      |                ^
+../Src/002led_button.c:37:16: error: request for member 'GPIO_PinConfig' in something not a structure or union
+   37 |         GpioBtn.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+      |                ^
+../Src/002led_button.c:44:20: warning: implicit declaration of function 'GPIO_ReadFromInputPin' [-Wimplicit-function-declaration]
+   44 |                 if(GPIO_ReadFromInputPin(GPIOC, GPIO_PIN_NO_13)  == BTN_PRESSED)
+      |                    ^~~~~~~~~~~~~~~~~~~~~
+../Src/002led_button.c:47:25: warning: implicit declaration of function 'GPIO_ToggleOutputPin' [-Wimplicit-function-declaration]
+   47 |                         GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
+      |                         ^~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:25: Src/002led_button.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:16:48 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/002led_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/002led_button.d" -MT"Src/002led_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/002led_button.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1596	      0	   1568	   3164	    c5c	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+22:17:57 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1596	      0	   1568	   3164	    c5c	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+22:19:20 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/002led_button.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/002led_button.d" -MT"Src/002led_button.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/002led_button.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1612	      0	   1568	   3180	    c6c	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+22:19:23 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1612	      0	   1568	   3180	    c6c	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+22:20:47 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1612	      0	   1568	   3180	    c6c	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+22:20:50 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1612	      0	   1568	   3180	    c6c	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
