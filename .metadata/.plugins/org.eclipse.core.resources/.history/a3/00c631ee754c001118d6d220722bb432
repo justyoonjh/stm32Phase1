@@ -37,31 +37,7 @@ void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t EnorDi)
 		}
 	}else
 	{
-		if(pGPIOx == GPIOA)
-		{
-			GPIOA_CLK_DI();
-		}else if (pGPIOx == GPIOB)
-		{
-			GPIOB_CLK_DI();
-		}else if (pGPIOx == GPIOC)
-		{
-			GPIOC_CLK_DI();
-		}else if (pGPIOx == GPIOD)
-		{
-			GPIOD_CLK_DI();
-		}else if (pGPIOx == GPIOE)
-		{
-			GPIOE_CLK_DI();
-		}else if (pGPIOx == GPIOF)
-		{
-			GPIOF_CLK_DI();
-		}else if (pGPIOx == GPIOG)
-		{
-			GPIOG_CLK_DI();
-		}else if (pGPIOx == GPIOH)
-		{
-			GPIOH_CLK_DI();
-		}
+
 	}
 }
 
@@ -211,7 +187,7 @@ void GPIO_IRQITConfig(uint8_t IRQNumber, uint8_t EnorDi)
 		}else if(IRQNumber >= 64 && IRQNumber < 96)
 		{
 			// ISER2
-			*NVIC_ISER2 |= (1 << (IRQNumber % 32));
+			*NVIC_ISER2 |= (1 << (IRQNumber % 64));
 		}
 	}else
 	{
