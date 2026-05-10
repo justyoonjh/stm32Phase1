@@ -34,7 +34,6 @@ int main(void)
 	GPIO_Init(&GpioBtn);
 
 	GPIO_IRQPriorityConfig(EXTI15_10_IRQNumber, 15);
-
 	GPIO_IRQITConfig(EXTI15_10_IRQNumber, ENABLE);
 
 
