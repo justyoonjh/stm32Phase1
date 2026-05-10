@@ -26,8 +26,6 @@
 
 #define NO_PR_BITS_IMPLEMENTED						4
 
-#define EXTI15_10_IRQNumber							40
-
 #define FLASH_BASEADDR								0x08000000U
 
 #define SRAM1_BASEADDR								0x20000000U

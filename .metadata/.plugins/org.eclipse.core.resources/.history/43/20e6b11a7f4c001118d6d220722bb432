@@ -226,7 +226,7 @@ void GPIO_IRQITConfig(uint8_t IRQNumber, uint8_t EnorDi)
 		}else if(IRQNumber >= 64 && IRQNumber < 96)
 		{
 			// ICER2
-			*NVIC_ICER2 |= (1 << (IRQNumber % 32));
+			*NVIC_ICER2 |= (1 << (IRQNumber % 64));
 		}
 	}
 }
