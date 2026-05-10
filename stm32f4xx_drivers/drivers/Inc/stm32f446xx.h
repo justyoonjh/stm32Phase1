@@ -12,6 +12,20 @@
 
 #define __vo volatile
 
+#define NVIC_ISER0									((__vo uint32_t*)0xE000E100)
+#define NVIC_ISER1									((__vo uint32_t*)0xE000E104)
+#define NVIC_ISER2									((__vo uint32_t*)0xE000E108)
+#define NVIC_ISER3									((__vo uint32_t*)0xE000E10C)
+
+#define NVIC_ICER0									((__vo uint32_t*)0xE000E180)
+#define NVIC_ICER1									((__vo uint32_t*)0xE000E184)
+#define NVIC_ICER2									((__vo uint32_t*)0xE000E188)
+#define NVIC_ICER3									((__vo uint32_t*)0xE000E18C)
+
+#define NVIC_PR_BASEADDR 							((__vo uint32_t*)0xE000E400)
+
+#define NO_PR_BITS_IMPLEMENTED						4
+
 #define FLASH_BASEADDR								0x08000000U
 
 #define SRAM1_BASEADDR								0x20000000U
@@ -116,6 +130,29 @@ typedef struct {
 	volatile uint32_t DCKCFGR2;
 }RCC_Regdef_t;
 
+typedef struct
+{
+	__vo uint32_t  MEMRMP;
+	__vo uint32_t  PMC;
+	__vo uint32_t  EXTICR[4];
+	uint32_t RESERVED1[2];
+	__vo uint32_t  CMPCR;
+	uint32_t RESERVED2[2];
+	__vo uint32_t  CFGR;
+}SYSCFG_RegDef_t;
+
+
+typedef struct
+{
+	__vo uint32_t IMR;
+	__vo uint32_t EMR;
+	__vo uint32_t RTSR;
+	__vo uint32_t FTSR;
+	__vo uint32_t SWIER;
+	__vo uint32_t PR;
+
+}EXTI_RegDef_t;
+
 // peripheral definitions
 
 #define GPIOA		((GPIO_RegDef_t*) GPIOA_BASEADDR)
@@ -128,6 +165,8 @@ typedef struct {
 #define GPIOH		((GPIO_RegDef_t*) GPIOH_BASEADDR)
 
 #define RCC 		((RCC_Regdef_t*) RCC_BASEADDR)
+#define EXTI  	((EXTI_RegDef_t*) EXTI_BASEADDR)
+#define SYSCFG 	((SYSCFG_RegDef_t*) SYSCFG_BASEADDR)
 
 #define GPIOA_CLK() (RCC->AHB1ENR |= (1U << 0))
 #define GPIOB_CLK() (RCC->AHB1ENR |= (1U << 1))
@@ -191,6 +230,10 @@ typedef struct {
 #define GPIOF_REG_RESET() do{(RCC->AHB1RSTR |= (1 << 5)); 			(RCC->AHB1RSTR &= ~(1 << 5));}while(0)
 #define GPIOG_REG_RESET() do{(RCC->AHB1RSTR |= (1 << 6)); 			(RCC->AHB1RSTR &= ~(1 << 6));}while(0)
 #define GPIOH_REG_RESET() do{(RCC->AHB1RSTR |= (1 << 7)); 			(RCC->AHB1RSTR &= ~(1 << 7));}while(0)
+
+static inline uint8_t GPIO_BASEADDR_TO_CODE(GPIO_RegDef_t *pGPIOx) {
+	return ((uint32_t)pGPIOx - 0x40020000) / 0x400;
+}
 
 #define ENABLE 1
 #define DISABLE 0
