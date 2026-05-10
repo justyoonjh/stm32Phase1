@@ -1751,3 +1751,66 @@ Finished building: default.size.stdout
  
 Finished building: stm32f4xx_drivers.list
  
+23:37:53 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_gpio_driver.d" -MT"drivers/Src/stm32f446xx_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_gpio_driver.o"
+arm-none-eabi-gcc "../Src/005button_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/005button_interrupt.d" -MT"Src/005button_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/005button_interrupt.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/005button_interrupt.c: In function 'main':
+../Src/005button_interrupt.c:17:47: error: 'GPIO_MODE_OUT' undeclared (first use in this function); did you mean 'GPIO_MODE_ALT'?
+   17 |         GpioLed.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
+      |                                               ^~~~~~~~~~~~~
+      |                                               GPIO_MODE_ALT
+../Src/005button_interrupt.c:17:47: note: each undeclared identifier is reported only once for each function it appears in
+../Src/005button_interrupt.c:19:49: error: 'GPIO_OP_TYPE_PP' undeclared (first use in this function); did you mean 'GPIO_OPTYPE_PP'?
+   19 |         GpioLed.GPIO_PinConfig.GPIO_PinOPtype = GPIO_OP_TYPE_PP;
+      |                                                 ^~~~~~~~~~~~~~~
+      |                                                 GPIO_OPTYPE_PP
+In file included from ../Src/005button_interrupt.c:9:
+../Src/005button_interrupt.c: In function 'EXTI15_10_IRQHandler':
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_gpio_driver.h:35:23: warning: passing argument 1 of 'GPIO_ToggleOutputPin' makes pointer from integer without a cast [-Wint-conversion]
+   35 | #define GPIO_PIN_NO_6 6
+      |                       ^
+      |                       |
+      |                       int
+../Src/005button_interrupt.c:45:30: note: in expansion of macro 'GPIO_PIN_NO_6'
+   45 |         GPIO_ToggleOutputPin(GPIO_PIN_NO_6);
+      |                              ^~~~~~~~~~~~~
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_gpio_driver.h:77:42: note: expected 'GPIO_RegDef_t *' but argument is of type 'int'
+   77 | void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
+      |                           ~~~~~~~~~~~~~~~^~~~~~
+../Src/005button_interrupt.c:45:9: error: too few arguments to function 'GPIO_ToggleOutputPin'
+   45 |         GPIO_ToggleOutputPin(GPIO_PIN_NO_6);
+      |         ^~~~~~~~~~~~~~~~~~~~
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_gpio_driver.h:77:6: note: declared here
+   77 | void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
+      |      ^~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:25: Src/005button_interrupt.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+23:39:41 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/005button_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/005button_interrupt.d" -MT"Src/005button_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/005button_interrupt.o"
+../Src/005button_interrupt.c: In function 'main':
+../Src/005button_interrupt.c:19:49: error: 'GPIO_OP_TYPE_PP' undeclared (first use in this function); did you mean 'GPIO_OPTYPE_PP'?
+   19 |         GpioLed.GPIO_PinConfig.GPIO_PinOPtype = GPIO_OP_TYPE_PP;
+      |                                                 ^~~~~~~~~~~~~~~
+      |                                                 GPIO_OPTYPE_PP
+../Src/005button_interrupt.c:19:49: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Src/subdir.mk:25: Src/005button_interrupt.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+23:40:03 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/005button_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/005button_interrupt.d" -MT"Src/005button_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/005button_interrupt.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   2484	      0	   1568	   4052	    fd4	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
