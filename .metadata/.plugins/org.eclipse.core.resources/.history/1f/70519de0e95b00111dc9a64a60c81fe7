@@ -155,17 +155,6 @@ typedef struct
 
 }EXTI_RegDef_t;
 
-typedef struct
-{
-	__vo uint32_t SR;
-	__vo uint32_t DR;
-	__vo uint32_t BRR;
-	__vo uint32_t CR1;
-	__vo uint32_t CR2;
-	__vo uint32_t CR3;
-	__vo uint32_t GTPR;
-}USART_RegDef_t;
-
 // peripheral definitions
 
 #define GPIOA		((GPIO_RegDef_t*) GPIOA_BASEADDR)
@@ -180,13 +169,6 @@ typedef struct
 #define RCC 		((RCC_Regdef_t*) RCC_BASEADDR)
 #define EXTI  	((EXTI_RegDef_t*) EXTI_BASEADDR)
 #define SYSCFG 	((SYSCFG_RegDef_t*) SYSCFG_BASEADDR)
-
-#define USART1 	((USART_RegDef_t*)USART1_BASEADDR)
-#define USART2 	((USART_RegDef_t*)USART2_BASEADDR)
-#define USART3 	((USART_RegDef_t*)USART3_BASEADDR)
-#define UART4 	((USART_RegDef_t*)UART4_BASEADDR)
-#define UART5 	((USART_RegDef_t*)UART5_BASEADDR)
-#define USART6 	((USART_RegDef_t*)USART6_BASEADDR)
 
 #define GPIOA_CLK() (RCC->AHB1ENR |= (1U << 0))
 #define GPIOB_CLK() (RCC->AHB1ENR |= (1U << 1))
@@ -255,73 +237,11 @@ static inline uint8_t GPIO_BASEADDR_TO_CODE(GPIO_RegDef_t *pGPIOx) {
 	return ((uint32_t)pGPIOx - 0x40020000) / 0x400;
 }
 
-#define IRQ_NO_EXTI0			6
-#define IRQ_NO_EXTI1			7
-#define IRQ_NO_EXTI2			8
-#define IRQ_NO_EXTI3			9
-#define IRQ_NO_EXTI4			10
-#define IRQ_NO_EXTI9_5		23
-#define IRQ_NO_EXTI15_10		40
-#define IRQ_NO_SPI1			35
-#define IRQ_NO_SPI2			36
-#define IRQ_NO_SPI3			51
-#define IRQ_NO_SPI4			84
-#define IRQ_NO_I2C1_EV		31
-#define IRQ_NO_I2C1_ER		32
-#define IRQ_NO_USART1		37
-#define IRQ_NO_USART2		38
-#define IRQ_NO_USART3		39
-#define IRQ_NO_UART4			52
-#define IRQ_NO_UART5			53
-#define IRQ_NO_USART6		71
-
-#define NVIC_IRQ_PRI0		0
-#define NVIC_IRQ_PRI15		15
-
 #define ENABLE 1
 #define DISABLE 0
 #define SET ENABLE
 #define RESET DISABLE
 #define GPIO_PIN_SET SET
 #define GPIO_PIN_RESET RESET
-
-#define USART_CR1_SBK		0  // Send Break. Only LIN
-#define USART_CR1_RWU		1  // Receiver Wakeup. Only Multiprocessor mode
-#define USART_CR1_RE			2  // Receiver Enable. 1=RX function ON
-#define USART_CR1_TE			3  // Transmitter Enable. 1=TX function ON
-#define USART_CR1_IDLEIE		4  // IDLE Interrupt Enable. IDLE 라인 감지 시 인터럽트. 가변 길이 패킷 수신 종료 감지에 활용 가능
-#define USART_CR1_RXNEIE		5  // RXNE Interrupt Enable. 1이면 RXNE 플래그 세트 시 인터럽트 발생, 수신 완료 후 RXNEIE = 0으로 비활성화
-#define USART_CR1_TCIE		6  // TC Interrupt Enable. 1이면 TC플래그 세트 시 인터럽트 발생
-#define USART_CR1_TXEIE		7  // TXE Interrupt Enable. 1이면 TXE플래그 세트 시 인터럽트 발생
-#define USART_CR1_PEIE		8  // PE Interrupt Enable. 1이면 PE(Parity Error) 플래그 세트 시 인터럽트 발생
-#define USART_CR1_PS			9  // Parity Selection. PCE=1일때만 유효. 0=Even, 1=Odd
-#define USART_CR1_PCE		10 // Parity Control Enable. 1=패리티 활성화. M=1과 함께 설정. 0=패리티 없음
-#define USART_CR1_WAKE		11 // Wakeup method. Only Multiprocessor mode
-#define USART_CR1_M			12 // Word Length. 0 = 8bit, 1 = 9bit(PCE = 1과 세트)
-#define USART_CR1_UE			13 // USART Enable. 1로 설정하면 USART Peripheral 활성화. 모든 설정 후 마지막에 세트
-#define USART_CR1_OVER8		15 // Oversampling mode. 0 = *16(노이즈 내성 우수), 1= *8(최대 Baudrate 두배, 노이즈 내성 낮음). BRR 계산식과 Fracrion비트수가 함께 바뀜.
-
-#define USART_CR2_ADD		0
-#define USART_CR2_LBDL		5
-#define USART_CR2_LBDIE		6
-#define USART_CR2_LBCL		8		// CLOCK Enable. 동기 모드에서 CLK 핀 활성화
-#define USART_CR2_CPMA		9		// Stop bit setting
-#define USART_CR2_CPOL		10
-#define USART_CR2_STOP		12
-#define USART_CR2_LINEN 		14
-
-#define USART_CR3_EIE		0		// Error Interrupt Enable. 1이면 ORE, NF, FE 에러 발생 시 인터럽트. 인터럽트 수신 모드에서 에러 처리에 필요
-#define USART_CR3_IREN		1
-#define USART_CR3_IRLP1 		2
-#define USART_CR3_HDSEL		3
-#define USART_CR3_NACK		4
-#define USART_CR3_SCEN		5
-#define USART_CR3_DMAR		6
-#define USART_CR3_DMAT		7
-#define USART_CR3_RTSE		8
-#define USART_CR3_CTSE		9
-#define USART_CR3_CTSIE		10
-#define USART_CR3_ONEBIT		11
-
 
 #endif /* INC_STM32F446XX_H_ */

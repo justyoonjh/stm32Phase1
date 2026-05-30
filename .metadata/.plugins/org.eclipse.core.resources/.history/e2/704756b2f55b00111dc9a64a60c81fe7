@@ -12,6 +12,22 @@
 
 #define __vo volatile
 
+#define NVIC_ISER0									((__vo uint32_t*)0xE000E100)
+#define NVIC_ISER1									((__vo uint32_t*)0xE000E104)
+#define NVIC_ISER2									((__vo uint32_t*)0xE000E108)
+#define NVIC_ISER3									((__vo uint32_t*)0xE000E10C)
+
+#define NVIC_ICER0									((__vo uint32_t*)0xE000E180)
+#define NVIC_ICER1									((__vo uint32_t*)0xE000E184)
+#define NVIC_ICER2									((__vo uint32_t*)0xE000E188)
+#define NVIC_ICER3									((__vo uint32_t*)0xE000E18C)
+
+#define NVIC_PR_BASEADDR 							((__vo uint32_t*)0xE000E400)
+
+#define NO_PR_BITS_IMPLEMENTED						4
+
+#define EXTI15_10_IRQNumber							40
+
 #define FLASH_BASEADDR								0x08000000U
 
 #define SRAM1_BASEADDR								0x20000000U
@@ -116,6 +132,40 @@ typedef struct {
 	volatile uint32_t DCKCFGR2;
 }RCC_Regdef_t;
 
+typedef struct
+{
+	__vo uint32_t  MEMRMP;
+	__vo uint32_t  PMC;
+	__vo uint32_t  EXTICR[4];
+	uint32_t RESERVED1[2];
+	__vo uint32_t  CMPCR;
+	uint32_t RESERVED2[2];
+	__vo uint32_t  CFGR;
+}SYSCFG_RegDef_t;
+
+
+typedef struct
+{
+	__vo uint32_t IMR;
+	__vo uint32_t EMR;
+	__vo uint32_t RTSR;
+	__vo uint32_t FTSR;
+	__vo uint32_t SWIER;
+	__vo uint32_t PR;
+
+}EXTI_RegDef_t;
+
+typedef struct
+{
+	__vo uint32_t SR;
+	__vo uint32_t DR;
+	__vo uint32_t BRR;
+	__vo uint32_t CR1;
+	__vo uint32_t CR2;
+	__vo uint32_t CR3;
+	__vo uint32_t GTPR;
+}USART_RegDef_t;
+
 // peripheral definitions
 
 #define GPIOA		((GPIO_RegDef_t*) GPIOA_BASEADDR)
@@ -128,6 +178,15 @@ typedef struct {
 #define GPIOH		((GPIO_RegDef_t*) GPIOH_BASEADDR)
 
 #define RCC 		((RCC_Regdef_t*) RCC_BASEADDR)
+#define EXTI  	((EXTI_RegDef_t*) EXTI_BASEADDR)
+#define SYSCFG 	((SYSCFG_RegDef_t*) SYSCFG_BASEADDR)
+
+#define USART1 	((USART_RegDef_t*)USART1_BASEADDR)
+#define USART2 	((USART_RegDef_t*)USART2_BASEADDR)
+#define USART3 	((USART_RegDef_t*)USART3_BASEADDR)
+#define UART4 	((USART_RegDef_t*)UART4_BASEADDR)
+#define UART5 	((USART_RegDef_t*)UART5_BASEADDR)
+#define USART6 	((USART_RegDef_t*)USART6_BASEADDR)
 
 #define GPIOA_CLK() (RCC->AHB1ENR |= (1U << 0))
 #define GPIOB_CLK() (RCC->AHB1ENR |= (1U << 1))
@@ -156,32 +215,32 @@ typedef struct {
 
 #define SYSCFG_CLK() (RCC->APB2ENR |= (1 << 14))
 
-#define GPIOA_CLK_DI() (RCC->AHB1ENR |= (0U << 0))
-#define GPIOB_CLK_DI() (RCC->AHB1ENR |= (0U << 1))
-#define GPIOC_CLK_DI() (RCC->AHB1ENR |= (0U << 2))
-#define GPIOD_CLK_DI() (RCC->AHB1ENR |= (0U << 3))
-#define GPIOE_CLK_DI() (RCC->AHB1ENR |= (0U << 4))
-#define GPIOF_CLK_DI() (RCC->AHB1ENR |= (0U << 5))
-#define GPIOG_CLK_DI() (RCC->AHB1ENR |= (0U << 6))
-#define GPIOH_CLK_DI() (RCC->AHB1ENR |= (0U << 7))
+#define GPIOA_CLK_DI() (RCC->AHB1ENR &= ~(1U << 0))
+#define GPIOB_CLK_DI() (RCC->AHB1ENR &= ~(1U << 1))
+#define GPIOC_CLK_DI() (RCC->AHB1ENR &= ~(1U << 2))
+#define GPIOD_CLK_DI() (RCC->AHB1ENR &= ~(1U << 3))
+#define GPIOE_CLK_DI() (RCC->AHB1ENR &= ~(1U << 4))
+#define GPIOF_CLK_DI() (RCC->AHB1ENR &= ~(1U << 5))
+#define GPIOG_CLK_DI() (RCC->AHB1ENR &= ~(1U << 6))
+#define GPIOH_CLK_DI() (RCC->AHB1ENR &= ~(1U << 7))
 
-#define I2C1_CLK_DI() (RCC->APB1ENR |= (0U << 21))
-#define I2C2_CLK_DI() (RCC->APB1ENR |= (0U << 22))
-#define I2C3_CLK_DI() (RCC->APB1ENR |= (0U << 23))
+#define I2C1_CLK_DI() (RCC->APB1ENR &= ~(1U << 21))
+#define I2C2_CLK_DI() (RCC->APB1ENR &= ~(1U << 22))
+#define I2C3_CLK_DI() (RCC->APB1ENR &= ~(1U << 23))
 
-#define SPI1_CLK_DI() (RCC->APB2ENR |= (0U << 12))
-#define SPI2_CLK_DI() (RCC->APB1ENR |= (0U << 14))
-#define SPI3_CLK_DI() (RCC->APB1ENR |= (0U << 15))
-#define SPI4_CLK_DI() (RCC->APB2ENR |= (0U << 13))
+#define SPI1_CLK_DI() (RCC->APB2ENR &= ~(1U << 12))
+#define SPI2_CLK_DI() (RCC->APB1ENR &= ~(1U << 14))
+#define SPI3_CLK_DI() (RCC->APB1ENR &= ~(1U << 15))
+#define SPI4_CLK_DI() (RCC->APB2ENR &= ~(1U << 13))
 
-#define USART1_CLK_DI() (RCC->APB2ENR |= (0 << 4))
-#define USART2_CLK_DI() (RCC->APB1ENR |= (0 << 17))
-#define USART3_CLK_DI() (RCC->APB1ENR |= (0 << 18))
-#define UART4_CLK_DI() (RCC->APB1ENR |= (0 << 19))
-#define UART5_CLK_DI() (RCC->APB1ENR |= (0 << 20))
-#define USART6_CLK_DI() (RCC->APB2ENR |= (0 << 5))
+#define USART1_CLK_DI() (RCC->APB2ENR &= ~(1 << 4))
+#define USART2_CLK_DI() (RCC->APB1ENR &= ~(1 << 17))
+#define USART3_CLK_DI() (RCC->APB1ENR &= ~(1 << 18))
+#define UART4_CLK_DI() (RCC->APB1ENR &= ~(1 << 19))
+#define UART5_CLK_DI() (RCC->APB1ENR &= ~(1 << 20))
+#define USART6_CLK_DI() (RCC->APB2ENR &= ~(1 << 5))
 
-#define SYSCFG_CLK_DI() (RCC->APB2ENR |= (0 << 14))
+#define SYSCFG_CLK_DI() (RCC->APB2ENR &= ~(1 << 14))
 
 #define GPIOA_REG_RESET() do{(RCC->AHB1RSTR |= (1 << 0)); 			(RCC->AHB1RSTR &= ~(1 << 0));}while(0)
 #define GPIOB_REG_RESET() do{(RCC->AHB1RSTR |= (1 << 1)); 			(RCC->AHB1RSTR &= ~(1 << 1));}while(0)
@@ -191,6 +250,30 @@ typedef struct {
 #define GPIOF_REG_RESET() do{(RCC->AHB1RSTR |= (1 << 5)); 			(RCC->AHB1RSTR &= ~(1 << 5));}while(0)
 #define GPIOG_REG_RESET() do{(RCC->AHB1RSTR |= (1 << 6)); 			(RCC->AHB1RSTR &= ~(1 << 6));}while(0)
 #define GPIOH_REG_RESET() do{(RCC->AHB1RSTR |= (1 << 7)); 			(RCC->AHB1RSTR &= ~(1 << 7));}while(0)
+
+static inline uint8_t GPIO_BASEADDR_TO_CODE(GPIO_RegDef_t *pGPIOx) {
+	return ((uint32_t)pGPIOx - 0x40020000) / 0x400;
+}
+
+#define IRQ_NO_EXTI0			6
+#define IRQ_NO_EXTI1			7
+#define IRQ_NO_EXTI2			8
+#define IRQ_NO_EXTI3			9
+#define IRQ_NO_EXTI4			10
+#define IRQ_NO_EXTI9_5		23
+#define IRQ_NO_EXTI15_10		40
+#define IRQ_NO_SPI1			35
+#define IRQ_NO_SPI2			36
+#define IRQ_NO_SPI3			51
+#define IRQ_NO_SPI4			84
+#define IRQ_NO_I2C1_EV		31
+#define IRQ_NO_I2C1_ER		32
+#define IRQ_NO_USART1		37
+#define IRQ_NO_USART2		38
+#define IRQ_NO_USART3		39
+#define IRQ_NO_UART4			52
+#define IRQ_NO_UART5			53
+#define IRQ_NO_USART6		71
 
 #define ENABLE 1
 #define DISABLE 0
