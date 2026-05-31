@@ -94,9 +94,7 @@ typedef struct
 
 #define USART_FLAG_TXE ( 1 << USART_SR_TXE )
 #define USART_FLAG_RXNE ( 1 << USART_SR_RXNE )
-#define USART_FLAG_TC ( 1 << USART_SR_TC )
-#define USART_FLAG_ORE ( 1 << USART_SR_ORE )
-#define USART_FLAG_IDLE ( 1 << USART_SR_IDLE )
+
 /*
  Application states
 */

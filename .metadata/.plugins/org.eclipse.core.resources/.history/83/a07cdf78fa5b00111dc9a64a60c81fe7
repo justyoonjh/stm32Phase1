@@ -304,10 +304,9 @@ static inline uint8_t GPIO_BASEADDR_TO_CODE(GPIO_RegDef_t *pGPIOx) {
 #define USART_CR2_ADD		0
 #define USART_CR2_LBDL		5
 #define USART_CR2_LBDIE		6
-#define USART_CR2_LBCL		8
-#define USART_CR2_CPHA		9		// Stop bit setting
+#define USART_CR2_LBCL		8		// CLOCK Enable. 동기 모드에서 CLK 핀 활성화
+#define USART_CR2_CPMA		9		// Stop bit setting
 #define USART_CR2_CPOL		10
-#define USART_CR2_CLKEN		11 		// CLOCK Enable. 동기 모드에서 CLK 핀 활성화
 #define USART_CR2_STOP		12
 #define USART_CR2_LINEN 		14
 
