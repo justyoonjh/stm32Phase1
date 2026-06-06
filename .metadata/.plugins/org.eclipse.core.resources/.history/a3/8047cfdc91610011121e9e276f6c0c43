@@ -8,49 +8,7 @@
 
 void USART_SetBaudData(USART_RegDef_t *pUSARTx, uint32_t BaudRate)
 {
-	uint32_t PCLKx;
 
-	uint32_t usartdiv;
-
-	uint32_t M_Part, F_Part;
-
-	uint32_t tempreg = 0;
-
-	if(pUSARTx == USART1 || pUSARTx == USART6)
-	{
-		PCLKx = RCC_GetPCLK2Value();
-	}else
-	{
-		PCLKx = RCC_GetPCLK1Value();
-	}
-
-	// USARTDIV = APB 클럭(25 * PCLKx) / (Oversampling * BaudRate)
-	500000*25=12500000
-	if(pUSARTx->CR1 & (1 << USART_CR1_OVER8))
-	{
-		usartdiv = ((25 * PCLKx) / (2 * BaudRate));
-	}else
-	{
-		usartdiv = ((25 * PCLKx) / (4 * BaudRate));
-	}
-
-	M_Part = usartdiv/100;
-
-	tempreg |= M_Part << 4;
-
-	F_Part = (usartdiv - (M-Part * 100));
-
-	if(pUSARTx->CR1 & (1 << USART_CR1_OVER8))
-	{
-		F_Part = (((F_Part * 8) + 50) /100) & ((uint8_t)0x07);
-	}else
-	{
-		F_Part = (((F_Part * 16) + 50) /100) & ((uint8_t)0x0F);
-	}
-
-	tempreg |= F_Part;
-
-	pUSARTx->BRR = tempreg;
 }
 
 
