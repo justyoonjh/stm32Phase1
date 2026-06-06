@@ -1,4 +1,4 @@
-/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx.h:236:23:GPIO_BASEADDR_TO_CODE	1
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx.h:254:23:GPIO_BASEADDR_TO_CODE	1
 ../drivers/Src/stm32f446xx_gpio_driver.c:9:6:GPIO_PeriClockControl	18
 ../drivers/Src/stm32f446xx_gpio_driver.c:68:6:GPIO_Init	6
 ../drivers/Src/stm32f446xx_gpio_driver.c:138:6:GPIO_DeInit	9

@@ -1871,3 +1871,199 @@ arm-none-eabi-size  stm32f4xx_drivers.elf
    2500	      0	   1568	   4068	    fe4	stm32f4xx_drivers.elf
 Finished building: default.size.stdout
  
+01:56:58 **** Clean-only build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 clean 
+rm -rf ./drivers/Src/stm32f446xx_gpio_driver.cyclo ./drivers/Src/stm32f446xx_gpio_driver.d ./drivers/Src/stm32f446xx_gpio_driver.o ./drivers/Src/stm32f446xx_gpio_driver.su
+rm -rf ./Startup/startup_stm32f446retx.d ./Startup/startup_stm32f446retx.o
+rm -rf ./Src/005button_interrupt.cyclo ./Src/005button_interrupt.d ./Src/005button_interrupt.o ./Src/005button_interrupt.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout stm32f4xx_drivers.elf stm32f4xx_drivers.list stm32f4xx_drivers.map
+ 
+01:56:58 **** Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_gpio_driver.d" -MT"drivers/Src/stm32f446xx_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_gpio_driver.o"
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_usart_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_usart_driver.d" -MT"drivers/Src/stm32f446xx_usart_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_usart_driver.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
+arm-none-eabi-gcc "../Src/005button_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/005button_interrupt.d" -MT"Src/005button_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/005button_interrupt.o"
+../drivers/Src/stm32f446xx_usart_driver.c: In function 'USART_Init':
+../drivers/Src/stm32f446xx_usart_driver.c:32:59: error: 'USART_MODE_TXRX' undeclared (first use in this function); did you mean 'USART_MODE_TX_RX'?
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+   32 |         }else if(pUSARTHandle->USART_Config.USART_Mode == USART_MODE_TXRX)
+      |                                                           ^~~~~~~~~~~~~~~
+      |                                                           USART_MODE_TX_RX
+../drivers/Src/stm32f446xx_usart_driver.c:32:59: note: each undeclared identifier is reported only once for each function it appears in
+../drivers/Src/stm32f446xx_usart_driver.c: In function 'USART_ReceiveData':
+../drivers/Src/stm32f446xx_usart_driver.c:269:1: error: expected declaration or statement at end of input
+  269 | }
+      | ^
+../drivers/Src/stm32f446xx_usart_driver.c: At top level:
+../drivers/Src/stm32f446xx_usart_driver.c:266:6: warning: 'USART_IRQHandling' defined but not used [-Wunused-function]
+  266 | void USART_IRQHandling(USART_Handle_t *pUSARTHandle)
+      |      ^~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:261:6: warning: 'USART_IRQPriorityConfig' defined but not used [-Wunused-function]
+  261 | void USART_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:256:6: warning: 'USART_IRQInterruptConfig' defined but not used [-Wunused-function]
+  256 | void USART_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:251:6: warning: 'USART_ClearFlag' defined but not used [-Wunused-function]
+  251 | void USART_ClearFlag(USART_RegDef_t *pUSARTx, uint16_t StatusFLagName)
+      |      ^~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:234:9: warning: 'USART_ReceiveDataIT' defined but not used [-Wunused-function]
+  234 | uint8_t USART_ReceiveDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+      |         ^~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:215:9: warning: 'USART_SendDataIT' defined but not used [-Wunused-function]
+  215 | uint8_t USART_SendDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+      |         ^~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:22: drivers/Src/stm32f446xx_usart_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+01:58:30 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_usart_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_usart_driver.d" -MT"drivers/Src/stm32f446xx_usart_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_usart_driver.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../drivers/Src/stm32f446xx_usart_driver.c: In function 'USART_ReceiveData':
+../drivers/Src/stm32f446xx_usart_driver.c:266:1: error: expected declaration or statement at end of input
+  266 | void USART_IRQHandling(USART_Handle_t *pUSARTHandle);
+      | ^~~~
+../drivers/Src/stm32f446xx_usart_driver.c: At top level:
+../drivers/Src/stm32f446xx_usart_driver.c:261:6: warning: 'USART_IRQPriorityConfig' defined but not used [-Wunused-function]
+  261 | void USART_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:256:6: warning: 'USART_IRQInterruptConfig' defined but not used [-Wunused-function]
+  256 | void USART_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:251:6: warning: 'USART_ClearFlag' defined but not used [-Wunused-function]
+  251 | void USART_ClearFlag(USART_RegDef_t *pUSARTx, uint16_t StatusFLagName)
+      |      ^~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:234:9: warning: 'USART_ReceiveDataIT' defined but not used [-Wunused-function]
+  234 | uint8_t USART_ReceiveDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+      |         ^~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:215:9: warning: 'USART_SendDataIT' defined but not used [-Wunused-function]
+  215 | uint8_t USART_SendDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+      |         ^~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:22: drivers/Src/stm32f446xx_usart_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+01:58:46 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_usart_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_usart_driver.d" -MT"drivers/Src/stm32f446xx_usart_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_usart_driver.o"
+../drivers/Src/stm32f446xx_usart_driver.c: In function 'USART_ReceiveData':
+../drivers/Src/stm32f446xx_usart_driver.c:269:1: error: expected declaration or statement at end of input
+  269 | }
+      | ^
+../drivers/Src/stm32f446xx_usart_driver.c: At top level:
+../drivers/Src/stm32f446xx_usart_driver.c:266:6: warning: 'USART_IRQHandling' defined but not used [-Wunused-function]
+  266 | void USART_IRQHandling(USART_Handle_t *pUSARTHandle)
+      |      ^~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:261:6: warning: 'USART_IRQPriorityConfig' defined but not used [-Wunused-function]
+  261 | void USART_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:256:6: warning: 'USART_IRQInterruptConfig' defined but not used [-Wunused-function]
+  256 | void USART_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:251:6: warning: 'USART_ClearFlag' defined but not used [-Wunused-function]
+  251 | void USART_ClearFlag(USART_RegDef_t *pUSARTx, uint16_t StatusFLagName)
+      |      ^~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:234:9: warning: 'USART_ReceiveDataIT' defined but not used [-Wunused-function]
+  234 | uint8_t USART_ReceiveDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+      |         ^~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:215:9: warning: 'USART_SendDataIT' defined but not used [-Wunused-function]
+  215 | uint8_t USART_SendDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+      |         ^~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:22: drivers/Src/stm32f446xx_usart_driver.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+01:08:54 **** Clean-only build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 clean 
+rm -rf ./drivers/Src/stm32f446xx_gpio_driver.cyclo ./drivers/Src/stm32f446xx_gpio_driver.d ./drivers/Src/stm32f446xx_gpio_driver.o ./drivers/Src/stm32f446xx_gpio_driver.su ./drivers/Src/stm32f446xx_usart_driver.cyclo ./drivers/Src/stm32f446xx_usart_driver.d ./drivers/Src/stm32f446xx_usart_driver.o ./drivers/Src/stm32f446xx_usart_driver.su
+rm -rf ./Startup/startup_stm32f446retx.d ./Startup/startup_stm32f446retx.o
+rm -rf ./Src/005button_interrupt.cyclo ./Src/005button_interrupt.d ./Src/005button_interrupt.o ./Src/005button_interrupt.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout stm32f4xx_drivers.elf stm32f4xx_drivers.list stm32f4xx_drivers.map
+ 
+01:08:54 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_gpio_driver.d" -MT"drivers/Src/stm32f446xx_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_gpio_driver.o"
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_usart_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_usart_driver.d" -MT"drivers/Src/stm32f446xx_usart_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_usart_driver.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
+arm-none-eabi-gcc "../Src/005button_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/005button_interrupt.d" -MT"Src/005button_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/005button_interrupt.o"
+../drivers/Src/stm32f446xx_usart_driver.c: In function 'USART_ReceiveData':
+../drivers/Src/stm32f446xx_usart_driver.c:269:1: error: expected declaration or statement at end of input
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+  269 | };
+      | ^
+../drivers/Src/stm32f446xx_usart_driver.c: At top level:
+../drivers/Src/stm32f446xx_usart_driver.c:266:6: warning: 'USART_IRQHandling' defined but not used [-Wunused-function]
+  266 | void USART_IRQHandling(USART_Handle_t *pUSARTHandle)
+      |      ^~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:261:6: warning: 'USART_IRQPriorityConfig' defined but not used [-Wunused-function]
+  261 | void USART_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:256:6: warning: 'USART_IRQInterruptConfig' defined but not used [-Wunused-function]
+  256 | void USART_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:251:6: warning: 'USART_ClearFlag' defined but not used [-Wunused-function]
+  251 | void USART_ClearFlag(USART_RegDef_t *pUSARTx, uint16_t StatusFLagName)
+      |      ^~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:234:9: warning: 'USART_ReceiveDataIT' defined but not used [-Wunused-function]
+  234 | uint8_t USART_ReceiveDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+      |         ^~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:215:9: warning: 'USART_SendDataIT' defined but not used [-Wunused-function]
+  215 | uint8_t USART_SendDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+      |         ^~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:22: drivers/Src/stm32f446xx_usart_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+01:09:31 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_usart_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_usart_driver.d" -MT"drivers/Src/stm32f446xx_usart_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_usart_driver.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../drivers/Src/stm32f446xx_usart_driver.c: In function 'USART_ReceiveData':
+../drivers/Src/stm32f446xx_usart_driver.c:269:1: error: expected declaration or statement at end of input
+  269 | }
+      | ^
+../drivers/Src/stm32f446xx_usart_driver.c: At top level:
+../drivers/Src/stm32f446xx_usart_driver.c:266:6: warning: 'USART_IRQHandling' defined but not used [-Wunused-function]
+  266 | void USART_IRQHandling(USART_Handle_t *pUSARTHandle)
+      |      ^~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:261:6: warning: 'USART_IRQPriorityConfig' defined but not used [-Wunused-function]
+  261 | void USART_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:256:6: warning: 'USART_IRQInterruptConfig' defined but not used [-Wunused-function]
+  256 | void USART_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi)
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:251:6: warning: 'USART_ClearFlag' defined but not used [-Wunused-function]
+  251 | void USART_ClearFlag(USART_RegDef_t *pUSARTx, uint16_t StatusFLagName)
+      |      ^~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:234:9: warning: 'USART_ReceiveDataIT' defined but not used [-Wunused-function]
+  234 | uint8_t USART_ReceiveDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+      |         ^~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:215:9: warning: 'USART_SendDataIT' defined but not used [-Wunused-function]
+  215 | uint8_t USART_SendDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+      |         ^~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:22: drivers/Src/stm32f446xx_usart_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+01:15:27 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_usart_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_usart_driver.d" -MT"drivers/Src/stm32f446xx_usart_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_usart_driver.o"
+../drivers/Src/stm32f446xx_usart_driver.c: In function 'USART_ReceiveDataIT':
+../drivers/Src/stm32f446xx_usart_driver.c:241:35: error: 'pRxBuffer' undeclared (first use in this function); did you mean 'pTxBuffer'?
+  241 |         pUSARTHandle->pRxBuffer = pRxBuffer;
+      |                                   ^~~~~~~~~
+      |                                   pTxBuffer
+../drivers/Src/stm32f446xx_usart_driver.c:241:35: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [drivers/Src/subdir.mk:22: drivers/Src/stm32f446xx_usart_driver.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+01:15:52 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_usart_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_usart_driver.d" -MT"drivers/Src/stm32f446xx_usart_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_usart_driver.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   2500	      0	   1568	   4068	    fe4	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 

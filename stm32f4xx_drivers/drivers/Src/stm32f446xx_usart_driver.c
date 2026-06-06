@@ -29,7 +29,7 @@ void USART_Init(USART_Handle_t *pUSARTHandle)
 	}else if(pUSARTHandle->USART_Config.USART_Mode == USART_MODE_ONLY_TX)
 	{
 		tempreg |= (1 << USART_CR1_TE);
-	}else if(pUSARTHandle->USART_Config.USART_Mode == USART_MODE_TXRX)
+	}else if(pUSARTHandle->USART_Config.USART_Mode == USART_MODE_TX_RX)
 	{
 		tempreg |= ((1 << USART_CR1_RE) | (1 << USART_CR1_TE));
 	}
@@ -80,6 +80,8 @@ void USART_Init(USART_Handle_t *pUSARTHandle)
 	pUSARTHandle->pUSARTx->CR3 = tempreg;
 
 	/*Configuration of BRR*/
+
+
 }
 
 void USART_PeripheralControl(USART_RegDef_t *pUSARTx, uint8_t Cmd)
@@ -194,7 +196,7 @@ void USART_ReceiveData(USART_Handle_t *pUSARTHandle, uint8_t *pRxBuffer, uint32_
 				}
 				else
 				{
-					*pRxBuffer++ = (pUSARTHandle->pUSARTx->DR & (uint8_t)0xFF);
+					*pRxBuffer = (pUSARTHandle->pUSARTx->DR & (uint8_t)0xFF);
 					pRxBuffer++;
 				}
 			}
@@ -210,13 +212,14 @@ void USART_ReceiveData(USART_Handle_t *pUSARTHandle, uint8_t *pRxBuffer, uint32_
 				}
 				pRxBuffer++;
 			}
+		}
 }
 
 uint8_t USART_SendDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
 {
 	uint8_t txstate = pUSARTHandle -> TxBusyState;
 
-	if(txstate != USART_BUSY_IN_RX)
+	if(txstate != USART_BUSY_IN_TX)
 	{
 		pUSARTHandle->TxLen = Len;
 		pUSARTHandle->pTxBuffer = pTxBuffer;
@@ -231,7 +234,7 @@ uint8_t USART_SendDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint3
 }
 
 
-uint8_t USART_ReceiveDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pTxBuffer, uint32_t Len)
+uint8_t USART_ReceiveDataIT(USART_Handle_t *pUSARTHandle, uint8_t *pRxBuffer, uint32_t Len)
 {
 	uint8_t rxstate = pUSARTHandle->RxBusyState;
 

@@ -2706,3 +2706,39 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-05-31 14:23:53.229
 !MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-06-03 00:22:17.259 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=ko_KR
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-06-03 00:22:44.877
+!MESSAGE Log4j2 initialized with config file /home/justjhst/바탕화면/Phase1_Udemy/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-06-03 00:22:52.069
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-06-05 20:48:44.136 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=ko_KR
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-06-05 20:48:51.636
+!MESSAGE Log4j2 initialized with config file /home/justjhst/바탕화면/Phase1_Udemy/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-06-05 20:48:58.542
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-06-06 14:59:58.238 -----------------------------------------------
+eclipse.buildId=Version 2.0.0
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=ko_KR
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-06-06 15:00:05.585
+!MESSAGE Log4j2 initialized with config file /home/justjhst/바탕화면/Phase1_Udemy/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-06-06 15:00:11.754
+!MESSAGE Started RMI Server, listening on port 41337
