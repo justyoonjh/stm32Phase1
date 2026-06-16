@@ -1,0 +1,10 @@
+/*
+ * stm32f446xx_i2c_driver.c
+ *
+ *  Created on: 2026. 6. 15.
+ *      Author: justjhst
+ */
+#include "stm32f446xx_i2c_driver.h"
+
+
+
