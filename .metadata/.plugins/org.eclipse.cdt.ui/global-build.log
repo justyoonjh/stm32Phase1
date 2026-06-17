@@ -2067,3 +2067,306 @@ Finished building: default.size.stdout
  
 Finished building: stm32f4xx_drivers.list
  
+00:31:09 **** Clean-only build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 clean 
+rm -rf ./drivers/Src/stm32f446xx_gpio_driver.cyclo ./drivers/Src/stm32f446xx_gpio_driver.d ./drivers/Src/stm32f446xx_gpio_driver.o ./drivers/Src/stm32f446xx_gpio_driver.su ./drivers/Src/stm32f446xx_usart_driver.cyclo ./drivers/Src/stm32f446xx_usart_driver.d ./drivers/Src/stm32f446xx_usart_driver.o ./drivers/Src/stm32f446xx_usart_driver.su
+rm -rf ./Startup/startup_stm32f446retx.d ./Startup/startup_stm32f446retx.o
+rm -rf ./Src/005button_interrupt.cyclo ./Src/005button_interrupt.d ./Src/005button_interrupt.o ./Src/005button_interrupt.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout stm32f4xx_drivers.elf stm32f4xx_drivers.list stm32f4xx_drivers.map
+ 
+00:31:10 **** Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_gpio_driver.d" -MT"drivers/Src/stm32f446xx_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_gpio_driver.o"
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_rcc_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_rcc_driver.d" -MT"drivers/Src/stm32f446xx_rcc_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_rcc_driver.o"
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_usart_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_usart_driver.d" -MT"drivers/Src/stm32f446xx_usart_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_usart_driver.o"
+../drivers/Src/stm32f446xx_usart_driver.c: In function 'USART_SetBaudData':
+../drivers/Src/stm32f446xx_usart_driver.c:21:25: warning: implicit declaration of function 'RCC_GetPCLK2Value' [-Wimplicit-function-declaration]
+   21 |                 PCLKx = RCC_GetPCLK2Value();
+      |                         ^~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_Init':
+../drivers/Src/stm32f446xx_i2c_driver.c:34:20: warning: implicit declaration of function 'RCC_GetPCLK1Value' [-Wimplicit-function-declaration]
+   34 |         tempreg |= RCC_GetPCLK1Value() / 100000U;
+      |                    ^~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:24:25: warning: implicit declaration of function 'RCC_GetPCLK1Value' [-Wimplicit-function-declaration]
+   24 |                 PCLKx = RCC_GetPCLK1Value();
+      |                         ^~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:46:17: error: 'ccr_vlaue' undeclared (first use in this function); did you mean 'ccr_value'?
+   46 |                 ccr_vlaue = (RCC_GetPCLK1Value() / (2 * pI2CHandle->I2C_Config.I2C_SCLSpeed));
+      |                 ^~~~~~~~~
+      |                 ccr_value
+../drivers/Src/stm32f446xx_i2c_driver.c:46:17: note: each undeclared identifier is reported only once for each function it appears in
+../drivers/Src/stm32f446xx_i2c_driver.c:55:38: warning: implicit declaration of function 'RCC_GerPCLK1Value' [-Wimplicit-function-declaration]
+   55 |                         ccr_value = (RCC_GerPCLK1Value() / (3 * pI2CHandle->I2C_Config.I2C_SCLSpeed));
+      |                                      ^~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_GetFlagStatus':
+../drivers/Src/stm32f446xx_i2c_driver.c:80:24: error: 'FLAG_SET' undeclared (first use in this function)
+   80 |                 return FLAG_SET;
+      |                        ^~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:82:16: error: 'FLAG_RESET' undeclared (first use in this function)
+   82 |         return FLAG_RESET;
+      |                ^~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:126:13: error: static declaration of 'I2C_GenerateStopCondition' follows non-static declaration
+  126 | static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../drivers/Src/stm32f446xx_i2c_driver.c:7:
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_i2c_driver.h:118:6: note: previous declaration of 'I2C_GenerateStopCondition' with type 'void(I2C_RegDef_t *)'
+  118 | void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_MasterReceiveData':
+../drivers/Src/stm32f446xx_i2c_driver.c:183:16: warning: implicit declaration of function 'I2C_FlagStatus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  183 |         while(!I2C_FlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_SB));
+      |                ^~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c:185:16: warning: implicit declaration of function 'I2C_GetFlagStaus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  185 |         while(!I2C_GetFlagStaus(pI2CHandle->pI2Cx, I2C_FLAG_ADDR));
+      |                ^~~~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_GetFlagStatus':
+../drivers/Src/stm32f446xx_i2c_driver.c:83:1: warning: control reaches end of non-void function [-Wreturn-type]
+   83 | }
+      | ^
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+00:32:20 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
+arm-none-eabi-gcc "../Src/005button_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/005button_interrupt.d" -MT"Src/005button_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/005button_interrupt.o"
+arm-none-eabi-gcc "../Src/015uart_tx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/015uart_tx.d" -MT"Src/015uart_tx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/015uart_tx.o"
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_Init':
+../drivers/Src/stm32f446xx_i2c_driver.c:47:17: error: 'ccr_vlaue' undeclared (first use in this function); did you mean 'ccr_value'?
+   47 |                 ccr_vlaue = (RCC_GetPCLK1Value() / (2 * pI2CHandle->I2C_Config.I2C_SCLSpeed));
+      |                 ^~~~~~~~~
+      |                 ccr_value
+../drivers/Src/stm32f446xx_i2c_driver.c:47:17: note: each undeclared identifier is reported only once for each function it appears in
+../drivers/Src/stm32f446xx_i2c_driver.c:56:38: warning: implicit declaration of function 'RCC_GerPCLK1Value'; did you mean 'RCC_GetPCLK1Value'? [-Wimplicit-function-declaration]
+   56 |                         ccr_value = (RCC_GerPCLK1Value() / (3 * pI2CHandle->I2C_Config.I2C_SCLSpeed));
+      |                                      ^~~~~~~~~~~~~~~~~
+      |                                      RCC_GetPCLK1Value
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_GetFlagStatus':
+../drivers/Src/stm32f446xx_i2c_driver.c:81:24: error: 'FLAG_SET' undeclared (first use in this function)
+   81 |                 return FLAG_SET;
+      |                        ^~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:83:16: error: 'FLAG_RESET' undeclared (first use in this function)
+   83 |         return FLAG_RESET;
+      |                ^~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:127:13: error: static declaration of 'I2C_GenerateStopCondition' follows non-static declaration
+  127 | static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../drivers/Src/stm32f446xx_i2c_driver.c:7:
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_i2c_driver.h:118:6: note: previous declaration of 'I2C_GenerateStopCondition' with type 'void(I2C_RegDef_t *)'
+  118 | void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_MasterReceiveData':
+../drivers/Src/stm32f446xx_i2c_driver.c:184:16: warning: implicit declaration of function 'I2C_FlagStatus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  184 |         while(!I2C_FlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_SB));
+      |                ^~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c:186:16: warning: implicit declaration of function 'I2C_GetFlagStaus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  186 |         while(!I2C_GetFlagStaus(pI2CHandle->pI2Cx, I2C_FLAG_ADDR));
+      |                ^~~~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_GetFlagStatus':
+../drivers/Src/stm32f446xx_i2c_driver.c:84:1: warning: control reaches end of non-void function [-Wreturn-type]
+   84 | }
+      | ^
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+00:32:37 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_Init':
+../drivers/Src/stm32f446xx_i2c_driver.c:56:38: warning: implicit declaration of function 'RCC_GerPCLK1Value'; did you mean 'RCC_GetPCLK1Value'? [-Wimplicit-function-declaration]
+   56 |                         ccr_value = (RCC_GerPCLK1Value() / (3 * pI2CHandle->I2C_Config.I2C_SCLSpeed));
+      |                                      ^~~~~~~~~~~~~~~~~
+      |                                      RCC_GetPCLK1Value
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_GetFlagStatus':
+../drivers/Src/stm32f446xx_i2c_driver.c:81:24: error: 'FLAG_SET' undeclared (first use in this function)
+   81 |                 return FLAG_SET;
+      |                        ^~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:81:24: note: each undeclared identifier is reported only once for each function it appears in
+../drivers/Src/stm32f446xx_i2c_driver.c:83:16: error: 'FLAG_RESET' undeclared (first use in this function)
+   83 |         return FLAG_RESET;
+      |                ^~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:127:13: error: static declaration of 'I2C_GenerateStopCondition' follows non-static declaration
+  127 | static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../drivers/Src/stm32f446xx_i2c_driver.c:7:
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_i2c_driver.h:118:6: note: previous declaration of 'I2C_GenerateStopCondition' with type 'void(I2C_RegDef_t *)'
+  118 | void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_MasterReceiveData':
+../drivers/Src/stm32f446xx_i2c_driver.c:184:16: warning: implicit declaration of function 'I2C_FlagStatus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  184 |         while(!I2C_FlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_SB));
+      |                ^~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c:186:16: warning: implicit declaration of function 'I2C_GetFlagStaus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  186 |         while(!I2C_GetFlagStaus(pI2CHandle->pI2Cx, I2C_FLAG_ADDR));
+      |                ^~~~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_GetFlagStatus':
+../drivers/Src/stm32f446xx_i2c_driver.c:84:1: warning: control reaches end of non-void function [-Wreturn-type]
+   84 | }
+      | ^
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+00:32:47 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_Init':
+../drivers/Src/stm32f446xx_i2c_driver.c:60:38: warning: implicit declaration of function 'RCC_GerPCLK1Value'; did you mean 'RCC_GetPCLK1Value'? [-Wimplicit-function-declaration]
+   60 |                         ccr_value = (RCC_GerPCLK1Value() / (25 * pI2CHandle->I2C_Config.I2C_SCLSpeed));
+      |                                      ^~~~~~~~~~~~~~~~~
+      |                                      RCC_GetPCLK1Value
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_GetFlagStatus':
+../drivers/Src/stm32f446xx_i2c_driver.c:81:24: error: 'FLAG_SET' undeclared (first use in this function)
+   81 |                 return FLAG_SET;
+      |                        ^~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:81:24: note: each undeclared identifier is reported only once for each function it appears in
+../drivers/Src/stm32f446xx_i2c_driver.c:83:16: error: 'FLAG_RESET' undeclared (first use in this function)
+   83 |         return FLAG_RESET;
+      |                ^~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:127:13: error: static declaration of 'I2C_GenerateStopCondition' follows non-static declaration
+  127 | static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../drivers/Src/stm32f446xx_i2c_driver.c:7:
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_i2c_driver.h:118:6: note: previous declaration of 'I2C_GenerateStopCondition' with type 'void(I2C_RegDef_t *)'
+  118 | void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_MasterReceiveData':
+../drivers/Src/stm32f446xx_i2c_driver.c:184:16: warning: implicit declaration of function 'I2C_FlagStatus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  184 |         while(!I2C_FlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_SB));
+      |                ^~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c:186:16: warning: implicit declaration of function 'I2C_GetFlagStaus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  186 |         while(!I2C_GetFlagStaus(pI2CHandle->pI2Cx, I2C_FLAG_ADDR));
+      |                ^~~~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_GetFlagStatus':
+../drivers/Src/stm32f446xx_i2c_driver.c:84:1: warning: control reaches end of non-void function [-Wreturn-type]
+   84 | }
+      | ^
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+00:32:53 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_GetFlagStatus':
+../drivers/Src/stm32f446xx_i2c_driver.c:81:24: error: 'FLAG_SET' undeclared (first use in this function)
+   81 |                 return FLAG_SET;
+      |                        ^~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:81:24: note: each undeclared identifier is reported only once for each function it appears in
+../drivers/Src/stm32f446xx_i2c_driver.c:83:16: error: 'FLAG_RESET' undeclared (first use in this function)
+   83 |         return FLAG_RESET;
+      |                ^~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:127:13: error: static declaration of 'I2C_GenerateStopCondition' follows non-static declaration
+  127 | static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../drivers/Src/stm32f446xx_i2c_driver.c:7:
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_i2c_driver.h:118:6: note: previous declaration of 'I2C_GenerateStopCondition' with type 'void(I2C_RegDef_t *)'
+  118 | void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_MasterReceiveData':
+../drivers/Src/stm32f446xx_i2c_driver.c:184:16: warning: implicit declaration of function 'I2C_FlagStatus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  184 |         while(!I2C_FlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_SB));
+      |                ^~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c:186:16: warning: implicit declaration of function 'I2C_GetFlagStaus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  186 |         while(!I2C_GetFlagStaus(pI2CHandle->pI2Cx, I2C_FLAG_ADDR));
+      |                ^~~~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_GetFlagStatus':
+../drivers/Src/stm32f446xx_i2c_driver.c:84:1: warning: control reaches end of non-void function [-Wreturn-type]
+   84 | }
+      | ^
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+00:33:35 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+../drivers/Src/stm32f446xx_i2c_driver.c:127:13: error: static declaration of 'I2C_GenerateStopCondition' follows non-static declaration
+  127 | static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../drivers/Src/stm32f446xx_i2c_driver.c:7:
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_i2c_driver.h:118:6: note: previous declaration of 'I2C_GenerateStopCondition' with type 'void(I2C_RegDef_t *)'
+  118 | void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_MasterReceiveData':
+../drivers/Src/stm32f446xx_i2c_driver.c:184:16: warning: implicit declaration of function 'I2C_FlagStatus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  184 |         while(!I2C_FlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_SB));
+      |                ^~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+../drivers/Src/stm32f446xx_i2c_driver.c:186:16: warning: implicit declaration of function 'I2C_GetFlagStaus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  186 |         while(!I2C_GetFlagStaus(pI2CHandle->pI2Cx, I2C_FLAG_ADDR));
+      |                ^~~~~~~~~~~~~~~~
+      |                I2C_GetFlagStatus
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+00:34:28 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+../drivers/Src/stm32f446xx_i2c_driver.c:127:13: error: static declaration of 'I2C_GenerateStopCondition' follows non-static declaration
+  127 | static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../drivers/Src/stm32f446xx_i2c_driver.c:7:
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_i2c_driver.h:118:6: note: previous declaration of 'I2C_GenerateStopCondition' with type 'void(I2C_RegDef_t *)'
+  118 | void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_MasterReceiveData':
+../drivers/Src/stm32f446xx_i2c_driver.c:203:32: warning: implicit declaration of function 'I2C_FlagStatus'; did you mean 'I2C_GetFlagStatus'? [-Wimplicit-function-declaration]
+  203 |                         while(!I2C_FlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_RXNE));
+      |                                ^~~~~~~~~~~~~~
+      |                                I2C_GetFlagStatus
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+00:34:36 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+../drivers/Src/stm32f446xx_i2c_driver.c:127:13: error: static declaration of 'I2C_GenerateStopCondition' follows non-static declaration
+  127 | static void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../drivers/Src/stm32f446xx_i2c_driver.c:7:
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_i2c_driver.h:118:6: note: previous declaration of 'I2C_GenerateStopCondition' with type 'void(I2C_RegDef_t *)'
+  118 | void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+00:35:11 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   2500	      0	   1568	   4068	    fe4	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+00:48:57 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   2500	      0	   1568	   4068	    fe4	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
