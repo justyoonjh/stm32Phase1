@@ -37,7 +37,7 @@ void USART_SetBaudData(USART_RegDef_t *pUSARTx, uint32_t BaudRate)
 
 	tempreg |= M_Part << 4;
 
-	F_Part = (usartdiv - (M_Part * 100));
+	F_Part = (usartdiv - (M-Part * 100));
 
 	if(pUSARTx->CR1 & (1 << USART_CR1_OVER8))
 	{

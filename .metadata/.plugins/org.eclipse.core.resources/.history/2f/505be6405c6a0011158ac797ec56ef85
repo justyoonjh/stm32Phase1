@@ -82,79 +82,21 @@ uint8_t I2C_GetFlagStatus(I2C_RegDef_t *pI2Cx, uint32_t FlagName)
 	return FLAG_RESET;
 }
 
-static void I2C_ExecuteAddressPhaseWrite(I2C_RegDef_t *pI2Cx, uint8_t SlaveAddr)
-{
-	SlaveAddr = SlaveAddr << 1;
-	SlaveAddr &= ~(1);
-	pI2Cx->DR = SlaveAddr;
-}
-
-static void I2C_ClearADDRFlag(I2C_Handle_t *pI2CHandle)
-{
-	uint32_t dummy_read;
-	if(pI2CHandle->pI2Cx->CR2 & (1 << I2C_SR2_MSL))
-	{
-		if(pI2CHandle->TxRxState == I2C_BUSY_IN_RX)
-		{
-			if(pI2CHandle->RxSize == 1)
-			{
-				I2C_ManageAcking(pI2CHandle->pI2Cx, DISABLE);
-				dummy_read = pI2CHandle->pI2Cx->SR1;
-				dummy_read = pI2CHandle->pI2Cx->SR2;
-				(void)dummy_read;
-			}
-		}
-		else
-		{
-			dummy_read = pI2CHandle->pI2Cx->SR1;
-			dummy_read = pI2CHandle->pI2Cx->SR2;
-			(void)dummy_read;
-		}
-	}
-	else
-	{
-		dummy_read = pI2CHandle->pI2Cx->SR1;
-		dummy_read = pI2CHandle->pI2Cx->SR2;
-	}
-}
-
-static void I2C_GenerateStartCondition(I2C_RegDef_t *pI2Cx)
-{
-	pI2Cx->CR1 |= (1 << I2C_CR1_START);
-}
-
-void I2C_GenerateStopCondition(I2C_RegDef_t *pI2Cx)
-{
-	pI2Cx->CR1 |= (1 << I2C_CR1_STOP);
-}
-
 void I2C_MasterSendData(I2C_Handle_t *pI2CHandle, uint8_t *pTxBuffer, uint32_t Len, uint8_t SlaveAddr, uint8_t Sr)
 {
-	// 1. START 조건 생성
 	I2C_GenerateStartCondition(pI2CHandle->pI2Cx);
-	// 2. SB플래그 대기(이제 주소를 DR에 써도 된다.)
+
 	while(!I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_SB));
-	// 3. 주소 전송
+
 	I2C_ExecuteAddressPhaseWrite(pI2CHandle->pI2Cx, SlaveAddr);
-	// 4. ADDR 플래그 대기
+
 	while(!I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_ADDR));
-	// 5. ADDR 클리어
+
 	I2C_ClearADDRFlag(pI2CHandle);
-	// 6. 데이터 전송 루프
+
 	while(Len > 0)
 	{
-		while(!I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_TXE));
-		pI2CHandle->pI2Cx->DR = *pTxBuffer;
-		pTxBuffer++;
-		Len--;
-	}
-	// 7. TXE + BTF 연속 대기
-	while(!I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_TXE));
-	while(!I2C_GetFlagStatus(pI2CHandle->pI2Cx, I2C_FLAG_BTF));
-	// 8. STOP 조건 - 조건부 생성 / ENABLE일시 Re-start로 이어짐
-	if(Sr == I2C_DISABLE_SR)
-	{
-		I2C_GenerateStopCondition(pI2CHandle->pI2Cx);
+
 	}
 }
 

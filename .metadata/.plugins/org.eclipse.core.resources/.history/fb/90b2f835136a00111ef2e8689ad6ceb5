@@ -38,7 +38,7 @@ typedef enum {
 	I2C_READY,
 	I2C_BUSY_IN_RX,
 	I2C_BUSY_IN_TX
-}I2C_AppState_t;
+};
 
 // I2C_SCLSpeed
 

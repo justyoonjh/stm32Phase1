@@ -8,7 +8,7 @@
 
 uint16_t AHB_PreScaler[8] = {2,4,8,16,64,128,256,512};
 uint32_t APB1_PreScaler[4] = {2,4,8,16};
-uint32_t APB2_PreScaler[4] = (2,4,8,16);
+uint32_t APB2_PreScaler[4] = {2,4,8,16};
 
 uint32_t RCC_GetPCLK1Value(void)
 {
