@@ -180,7 +180,7 @@ void I2C_ManageAcking(I2C_RegDef_t *pI2Cx, uint8_t EnorDi)
 	}
 }
 
-void I2C_MasterReceiveData(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_t Len, uint8_t SlaveAddr, uint8_t Sr)
+void I2C_MasterReceiveData(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint8_t Len, uint8_t SlaveAddr, uint8_t Sr)
 {
 	// 1. START + SB 대기 - SendData와 동일
 	I2C_GenerateStartCondition(pI2CHandle->pI2Cx);
@@ -286,7 +286,7 @@ void I2C_CloseSendData(I2C_Handle_t *pI2CHandle)
 
 void I2C_CloseReceiveData(I2C_Handle_t *pI2CHandle)
 {
-	pI2CHandle->pI2Cx->CR2 &= ~(1 << I2C_CR2_ITEVTEN);
+	pI2CHandle->pI2Cx->CR2 &= ~(1 << I2C_CR2_ITBUFEN);
 
 	pI2CHandle->pI2Cx->CR2 &= ~(1 << I2C_CR2_ITBUFEN);
 
@@ -341,7 +341,7 @@ static void I2C_MasterHandleRXNEInterrupt(I2C_Handle_t *pI2CHandle)
 	}
 }
 
-void I2C_EV_IRQHandling(I2C_Handle_t *pI2CHandle)
+void I2C_EV_IRQHanding(I2C_Handle_t *pI2CHandle)
 {
 	uint32_t temp1, temp2, temp3;
 
