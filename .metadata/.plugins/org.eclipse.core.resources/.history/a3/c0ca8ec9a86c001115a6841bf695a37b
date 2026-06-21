@@ -74,8 +74,6 @@ typedef enum {
 #define I2C_DISABLE_SR			RESET
 #define I2C_ENABLE_SR			SET
 
-#define NULL						0
-
 // I2C application events macros
 
 typedef enum {

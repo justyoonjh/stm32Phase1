@@ -2370,3 +2370,280 @@ Finished building: default.size.stdout
  
 Finished building: stm32f4xx_drivers.list
  
+21:58:09 **** Clean-only build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 clean 
+rm -rf ./drivers/Src/stm32f446xx_gpio_driver.cyclo ./drivers/Src/stm32f446xx_gpio_driver.d ./drivers/Src/stm32f446xx_gpio_driver.o ./drivers/Src/stm32f446xx_gpio_driver.su ./drivers/Src/stm32f446xx_i2c_driver.cyclo ./drivers/Src/stm32f446xx_i2c_driver.d ./drivers/Src/stm32f446xx_i2c_driver.o ./drivers/Src/stm32f446xx_i2c_driver.su ./drivers/Src/stm32f446xx_rcc_driver.cyclo ./drivers/Src/stm32f446xx_rcc_driver.d ./drivers/Src/stm32f446xx_rcc_driver.o ./drivers/Src/stm32f446xx_rcc_driver.su ./drivers/Src/stm32f446xx_usart_driver.cyclo ./drivers/Src/stm32f446xx_usart_driver.d ./drivers/Src/stm32f446xx_usart_driver.o ./drivers/Src/stm32f446xx_usart_driver.su
+rm -rf ./Startup/startup_stm32f446retx.d ./Startup/startup_stm32f446retx.o
+rm -rf ./Src/005button_interrupt.cyclo ./Src/005button_interrupt.d ./Src/005button_interrupt.o ./Src/005button_interrupt.su ./Src/015uart_tx.cyclo ./Src/015uart_tx.d ./Src/015uart_tx.o ./Src/015uart_tx.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf default.size.stdout stm32f4xx_drivers.elf stm32f4xx_drivers.list stm32f4xx_drivers.map
+ 
+21:58:09 **** Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_gpio_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_gpio_driver.d" -MT"drivers/Src/stm32f446xx_gpio_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_gpio_driver.o"
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_rcc_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_rcc_driver.d" -MT"drivers/Src/stm32f446xx_rcc_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_rcc_driver.o"
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_usart_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_usart_driver.d" -MT"drivers/Src/stm32f446xx_usart_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_usart_driver.o"
+../drivers/Src/stm32f446xx_usart_driver.c: In function 'USART_SetBaudData':
+../drivers/Src/stm32f446xx_usart_driver.c:21:25: warning: implicit declaration of function 'RCC_GetPCLK2Value' [-Wimplicit-function-declaration]
+   21 |                 PCLKx = RCC_GetPCLK2Value();
+      |                         ^~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_usart_driver.c:24:25: warning: implicit declaration of function 'RCC_GetPCLK1Value' [-Wimplicit-function-declaration]
+   24 |                 PCLKx = RCC_GetPCLK1Value();
+      |                         ^~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:253:9: error: conflicting types for 'I2C_MasterReceiveDataIT'; have 'uint8_t(I2C_Handle_t *, uint8_t *, uint32_t,  uint8_t,  uint8_t)' {aka 'unsigned char(I2C_Handle_t *, unsigned char *, long unsigned int,  unsigned char,  unsigned char)'}
+  253 | uint8_t I2C_MasterReceiveDataIT(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint32_t Len, uint8_t SlaveAddr, uint8_t Sr)
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../drivers/Src/stm32f446xx_i2c_driver.c:7:
+/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc/stm32f446xx_i2c_driver.h:102:9: note: previous declaration of 'I2C_MasterReceiveDataIT' with type 'uint8_t(I2C_Handle_t *, uint8_t *, uint8_t,  uint8_t,  uint8_t)' {aka 'unsigned char(I2C_Handle_t *, unsigned char *, unsigned char,  unsigned char,  unsigned char)'}
+  102 | uint8_t I2C_MasterReceiveDataIT(I2C_Handle_t *pI2CHandle, uint8_t *pRxBuffer, uint8_t Len, uint8_t SlaveAddr, uint8_t Sr);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_CloseSendData':
+../drivers/Src/stm32f446xx_i2c_driver.c:283:33: error: 'NULL' undeclared (first use in this function)
+  283 |         pI2CHandle->pTxBuffer = NULL;
+      |                                 ^~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:9:1: note: 'NULL' is defined in header '<stddef.h>'; did you forget to '#include <stddef.h>'?
+    8 | #include "stm32f446xx_rcc_driver.h"
+  +++ |+#include <stddef.h>
+    9 | 
+../drivers/Src/stm32f446xx_i2c_driver.c:283:33: note: each undeclared identifier is reported only once for each function it appears in
+  283 |         pI2CHandle->pTxBuffer = NULL;
+      |                                 ^~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_CloseReceiveData':
+../drivers/Src/stm32f446xx_i2c_driver.c:294:33: error: 'NULL' undeclared (first use in this function)
+  294 |         pI2CHandle->pRxBuffer = NULL;
+      |                                 ^~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:294:33: note: 'NULL' is defined in header '<stddef.h>'; did you forget to '#include <stddef.h>'?
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_EV_IRQHanding':
+../drivers/Src/stm32f446xx_i2c_driver.c:371:59: error: 'I2C_SR1_TXE' undeclared (first use in this function); did you mean 'I2C_SR1_TxE'?
+  371 |                         if(pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_TXE))
+      |                                                           ^~~~~~~~~~~
+      |                                                           I2C_SR1_TxE
+../drivers/Src/stm32f446xx_i2c_driver.c:378:41: warning: implicit declaration of function 'I2C_ApplicstionEventCallback'; did you mean 'I2C_ApplicationEventCallback'? [-Wimplicit-function-declaration]
+  378 |                                         I2C_ApplicstionEventCallback(pI2CHandle, I2C_EV_TX_CMPLT);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                         I2C_ApplicationEventCallback
+../drivers/Src/stm32f446xx_i2c_driver.c:401:33: warning: implicit declaration of function 'I2C_MasterHandleTXInterrupt'; did you mean 'I2C_MasterHandleTXEInterrupt'? [-Wimplicit-function-declaration]
+  401 |                                 I2C_MasterHandleTXInterrupt(pI2CHandle);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                 I2C_MasterHandleTXEInterrupt
+../drivers/Src/stm32f446xx_i2c_driver.c:410:48: error: 'I2C_SR1_RXNE' undeclared (first use in this function); did you mean 'I2C_SR1_RxNE'?
+  410 |         temp3 = pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_RXNE);
+      |                                                ^~~~~~~~~~~~
+      |                                                I2C_SR1_RxNE
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:304:13: warning: 'I2C_MasterHandleTXEInterrupt' defined but not used [-Wunused-function]
+  304 | static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+21:59:34 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f446retx.d" -MT"Startup/startup_stm32f446retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f446retx.o" "../Startup/startup_stm32f446retx.s"
+arm-none-eabi-gcc "../Src/005button_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/005button_interrupt.d" -MT"Src/005button_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/005button_interrupt.o"
+arm-none-eabi-gcc "../Src/015uart_tx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/015uart_tx.d" -MT"Src/015uart_tx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/015uart_tx.o"
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_CloseSendData':
+../drivers/Src/stm32f446xx_i2c_driver.c:283:33: error: 'NULL' undeclared (first use in this function)
+  283 |         pI2CHandle->pTxBuffer = NULL;
+      |                                 ^~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:9:1: note: 'NULL' is defined in header '<stddef.h>'; did you forget to '#include <stddef.h>'?
+    8 | #include "stm32f446xx_rcc_driver.h"
+  +++ |+#include <stddef.h>
+    9 | 
+../drivers/Src/stm32f446xx_i2c_driver.c:283:33: note: each undeclared identifier is reported only once for each function it appears in
+  283 |         pI2CHandle->pTxBuffer = NULL;
+      |                                 ^~~~
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_CloseReceiveData':
+../drivers/Src/stm32f446xx_i2c_driver.c:294:33: error: 'NULL' undeclared (first use in this function)
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+  294 |         pI2CHandle->pRxBuffer = NULL;
+      |                                 ^~~~
+../drivers/Src/stm32f446xx_i2c_driver.c:294:33: note: 'NULL' is defined in header '<stddef.h>'; did you forget to '#include <stddef.h>'?
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_EV_IRQHanding':
+../drivers/Src/stm32f446xx_i2c_driver.c:371:59: error: 'I2C_SR1_TXE' undeclared (first use in this function); did you mean 'I2C_SR1_TxE'?
+  371 |                         if(pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_TXE))
+      |                                                           ^~~~~~~~~~~
+      |                                                           I2C_SR1_TxE
+../drivers/Src/stm32f446xx_i2c_driver.c:378:41: warning: implicit declaration of function 'I2C_ApplicstionEventCallback'; did you mean 'I2C_ApplicationEventCallback'? [-Wimplicit-function-declaration]
+  378 |                                         I2C_ApplicstionEventCallback(pI2CHandle, I2C_EV_TX_CMPLT);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                         I2C_ApplicationEventCallback
+../drivers/Src/stm32f446xx_i2c_driver.c:401:33: warning: implicit declaration of function 'I2C_MasterHandleTXInterrupt'; did you mean 'I2C_MasterHandleTXEInterrupt'? [-Wimplicit-function-declaration]
+  401 |                                 I2C_MasterHandleTXInterrupt(pI2CHandle);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                 I2C_MasterHandleTXEInterrupt
+../drivers/Src/stm32f446xx_i2c_driver.c:410:48: error: 'I2C_SR1_RXNE' undeclared (first use in this function); did you mean 'I2C_SR1_RxNE'?
+  410 |         temp3 = pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_RXNE);
+      |                                                ^~~~~~~~~~~~
+      |                                                I2C_SR1_RxNE
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:304:13: warning: 'I2C_MasterHandleTXEInterrupt' defined but not used [-Wunused-function]
+  304 | static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:06:02 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_EV_IRQHanding':
+../drivers/Src/stm32f446xx_i2c_driver.c:371:59: error: 'I2C_SR1_TXE' undeclared (first use in this function); did you mean 'I2C_SR1_TxE'?
+  371 |                         if(pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_TXE))
+      |                                                           ^~~~~~~~~~~
+      |                                                           I2C_SR1_TxE
+../drivers/Src/stm32f446xx_i2c_driver.c:371:59: note: each undeclared identifier is reported only once for each function it appears in
+../drivers/Src/stm32f446xx_i2c_driver.c:378:41: warning: implicit declaration of function 'I2C_ApplicstionEventCallback'; did you mean 'I2C_ApplicationEventCallback'? [-Wimplicit-function-declaration]
+  378 |                                         I2C_ApplicstionEventCallback(pI2CHandle, I2C_EV_TX_CMPLT);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                         I2C_ApplicationEventCallback
+../drivers/Src/stm32f446xx_i2c_driver.c:401:33: warning: implicit declaration of function 'I2C_MasterHandleTXInterrupt'; did you mean 'I2C_MasterHandleTXEInterrupt'? [-Wimplicit-function-declaration]
+  401 |                                 I2C_MasterHandleTXInterrupt(pI2CHandle);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                 I2C_MasterHandleTXEInterrupt
+../drivers/Src/stm32f446xx_i2c_driver.c:410:48: error: 'I2C_SR1_RXNE' undeclared (first use in this function); did you mean 'I2C_SR1_RxNE'?
+  410 |         temp3 = pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_RXNE);
+      |                                                ^~~~~~~~~~~~
+      |                                                I2C_SR1_RxNE
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:304:13: warning: 'I2C_MasterHandleTXEInterrupt' defined but not used [-Wunused-function]
+  304 | static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:06:32 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_EV_IRQHanding':
+../drivers/Src/stm32f446xx_i2c_driver.c:378:41: warning: implicit declaration of function 'I2C_ApplicstionEventCallback'; did you mean 'I2C_ApplicationEventCallback'? [-Wimplicit-function-declaration]
+  378 |                                         I2C_ApplicstionEventCallback(pI2CHandle, I2C_EV_TX_CMPLT);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                         I2C_ApplicationEventCallback
+../drivers/Src/stm32f446xx_i2c_driver.c:395:48: error: 'I2C_SR1_TXE' undeclared (first use in this function); did you mean 'I2C_SR1_TxE'?
+  395 |         temp3 = pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_TXE);
+      |                                                ^~~~~~~~~~~
+      |                                                I2C_SR1_TxE
+../drivers/Src/stm32f446xx_i2c_driver.c:395:48: note: each undeclared identifier is reported only once for each function it appears in
+../drivers/Src/stm32f446xx_i2c_driver.c:401:33: warning: implicit declaration of function 'I2C_MasterHandleTXInterrupt'; did you mean 'I2C_MasterHandleTXEInterrupt'? [-Wimplicit-function-declaration]
+  401 |                                 I2C_MasterHandleTXInterrupt(pI2CHandle);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                 I2C_MasterHandleTXEInterrupt
+../drivers/Src/stm32f446xx_i2c_driver.c:410:48: error: 'I2C_SR1_RXNE' undeclared (first use in this function); did you mean 'I2C_SR1_RxNE'?
+  410 |         temp3 = pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_RXNE);
+      |                                                ^~~~~~~~~~~~
+      |                                                I2C_SR1_RxNE
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:304:13: warning: 'I2C_MasterHandleTXEInterrupt' defined but not used [-Wunused-function]
+  304 | static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:06:43 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_EV_IRQHanding':
+../drivers/Src/stm32f446xx_i2c_driver.c:395:48: error: 'I2C_SR1_TXE' undeclared (first use in this function); did you mean 'I2C_SR1_TxE'?
+  395 |         temp3 = pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_TXE);
+      |                                                ^~~~~~~~~~~
+      |                                                I2C_SR1_TxE
+../drivers/Src/stm32f446xx_i2c_driver.c:395:48: note: each undeclared identifier is reported only once for each function it appears in
+../drivers/Src/stm32f446xx_i2c_driver.c:401:33: warning: implicit declaration of function 'I2C_MasterHandleTXInterrupt'; did you mean 'I2C_MasterHandleTXEInterrupt'? [-Wimplicit-function-declaration]
+  401 |                                 I2C_MasterHandleTXInterrupt(pI2CHandle);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                 I2C_MasterHandleTXEInterrupt
+../drivers/Src/stm32f446xx_i2c_driver.c:410:48: error: 'I2C_SR1_RXNE' undeclared (first use in this function); did you mean 'I2C_SR1_RxNE'?
+  410 |         temp3 = pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_RXNE);
+      |                                                ^~~~~~~~~~~~
+      |                                                I2C_SR1_RxNE
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:304:13: warning: 'I2C_MasterHandleTXEInterrupt' defined but not used [-Wunused-function]
+  304 | static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:06:51 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_EV_IRQHanding':
+../drivers/Src/stm32f446xx_i2c_driver.c:401:33: warning: implicit declaration of function 'I2C_MasterHandleTXInterrupt'; did you mean 'I2C_MasterHandleTXEInterrupt'? [-Wimplicit-function-declaration]
+  401 |                                 I2C_MasterHandleTXInterrupt(pI2CHandle);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                 I2C_MasterHandleTXEInterrupt
+../drivers/Src/stm32f446xx_i2c_driver.c:410:48: error: 'I2C_SR1_RXNE' undeclared (first use in this function); did you mean 'I2C_SR1_RxNE'?
+  410 |         temp3 = pI2CHandle->pI2Cx->SR1 & (1 << I2C_SR1_RXNE);
+      |                                                ^~~~~~~~~~~~
+      |                                                I2C_SR1_RxNE
+../drivers/Src/stm32f446xx_i2c_driver.c:410:48: note: each undeclared identifier is reported only once for each function it appears in
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:304:13: warning: 'I2C_MasterHandleTXEInterrupt' defined but not used [-Wunused-function]
+  304 | static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [drivers/Src/subdir.mk:28: drivers/Src/stm32f446xx_i2c_driver.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+22:06:58 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+../drivers/Src/stm32f446xx_i2c_driver.c: In function 'I2C_EV_IRQHanding':
+../drivers/Src/stm32f446xx_i2c_driver.c:401:33: warning: implicit declaration of function 'I2C_MasterHandleTXInterrupt'; did you mean 'I2C_MasterHandleTXEInterrupt'? [-Wimplicit-function-declaration]
+  401 |                                 I2C_MasterHandleTXInterrupt(pI2CHandle);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                 I2C_MasterHandleTXEInterrupt
+../drivers/Src/stm32f446xx_i2c_driver.c: At top level:
+../drivers/Src/stm32f446xx_i2c_driver.c:304:13: warning: 'I2C_MasterHandleTXEInterrupt' defined but not used [-Wunused-function]
+  304 | static void I2C_MasterHandleTXEInterrupt(I2C_Handle_t *pI2CHandle)
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   2500	      0	   1568	   4068	    fe4	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+22:07:08 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-gcc "../drivers/Src/stm32f446xx_i2c_driver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DNUCLEO_F446RE -c -I../Inc -I"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"drivers/Src/stm32f446xx_i2c_driver.d" -MT"drivers/Src/stm32f446xx_i2c_driver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "drivers/Src/stm32f446xx_i2c_driver.o"
+arm-none-eabi-gcc -o "stm32f4xx_drivers.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/justjhst/바탕화면/Phase1_Udemy/stm32f4xx_drivers/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f4xx_drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f4xx_drivers.elf
+ 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+arm-none-eabi-objdump -h -S stm32f4xx_drivers.elf  > "stm32f4xx_drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   2500	      0	   1568	   4068	    fe4	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f4xx_drivers.list
+ 
+22:07:11 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2500	      0	   1568	   4068	    fe4	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+22:07:12 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2500	      0	   1568	   4068	    fe4	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+22:07:13 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2500	      0	   1568	   4068	    fe4	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
+22:07:14 **** Incremental Build of configuration Debug for project stm32f4xx_drivers ****
+make -j4 all 
+arm-none-eabi-size  stm32f4xx_drivers.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2500	      0	   1568	   4068	    fe4	stm32f4xx_drivers.elf
+Finished building: default.size.stdout
+ 
